@@ -62,6 +62,11 @@ export const paramDef = {
 		color: { type: 'string', minLength: 1, maxLength: 16 },
 		isSensitive: { type: 'boolean', nullable: true },
 		allowRenoteToExternal: { type: 'boolean', nullable: true },
+		coordinators: {
+			type: 'array',
+			items: { type: 'string', format: 'misskey:id' },
+			nullable: true,
+		},
 	},
 	required: ['channelId'],
 } as const;

@@ -599,6 +599,11 @@ export const ROUTE_DEF = [{
 	component: page(() => import('@/pages/debug.vue')),
 	loginRequired: false,
 }, {
+	//こっから追加要素
+	path: '/stations/:stationId/projects',
+	component: page(() => import('@/pages/stations/projects.vue')),
+	loginRequired: false,
+}, {
 	// テスト用リダイレクト設定。ログイン中ユーザのプロフィールにリダイレクトする
 	path: '/redirect-test',
 	redirect: $i ? `@${$i.username}` : '/',
