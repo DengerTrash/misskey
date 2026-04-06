@@ -4,9 +4,9 @@
  */
 
 import { PrimaryColumn, Entity, Index, JoinColumn, Column, ManyToOne } from 'typeorm';
-import { id } from './util/id.js';
-import { MiUser } from './User.js';
-import { MiChatRoom } from './ChatRoom.js';
+import { id } from './util/id.ts';
+import { MiUser } from './User.ts';
+import { MiChatRoom } from './ChatRoom.ts';
 
 @Entity('chat_room_membership')
 @Index(['userId', 'roomId'], { unique: true })

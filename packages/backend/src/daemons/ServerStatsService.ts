@@ -6,9 +6,9 @@
 import { Inject, Injectable } from '@nestjs/common';
 import Xev from 'xev';
 import * as osUtils from 'os-utils';
-import { bindThis } from '@/decorators.js';
-import { MiMeta } from '@/models/_.js';
-import { DI } from '@/di-symbols.js';
+import { bindThis } from '@/decorators.ts';
+import { MiMeta } from '@/models/_.ts';
+import { DI } from '@/di-symbols.ts';
 import type { OnApplicationShutdown } from '@nestjs/common';
 
 const ev = new Xev();

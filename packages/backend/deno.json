@@ -1,0 +1,19 @@
+{
+	"name": "backend",
+	"exports": "./mod.ts",
+	"imports": {
+		"$hono/": "https://deno.land/x/hono@v3.2.1/",
+		"@/": "./src/",
+
+		"crypto": "node:crypto",
+		"events": "node:events",
+
+		"misskey-reversi": "../misskey-reversi/src/mod.ts",
+		"misskey-js": "../misskey-js/src/index.ts",
+		"i18n/": "../i18n/src/"
+	},
+	"tasks": {
+		"compile-config": "deno run --allow-run --allow-sys --allow-env --allow-read --allow-net --allow-write ./scripts/deno/compile_config.ts",
+		"dev": "deno task compile-config && deno run --sloppy-imports --allow-ffi --allow-read --allow-env --watch ./src/bootleg/entry.ts"
+	}
+}

@@ -4,8 +4,8 @@
  */
 
 import { Entity, Index, JoinColumn, Column, PrimaryColumn, ManyToOne } from 'typeorm';
-import { id } from './util/id.js';
-import { MiUser } from './User.js';
+import { id } from './util/id.ts';
+import { MiUser } from './User.ts';
 
 export const flashVisibility = ['public', 'private'] as const;
 export type FlashVisibility = typeof flashVisibility[number];

@@ -4,10 +4,10 @@
  */
 
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
-import { MiSystemWebhook } from '@/models/SystemWebhook.js';
-import { MiUserProfile } from '@/models/UserProfile.js';
-import { id } from './util/id.js';
-import { MiUser } from './User.js';
+import { MiSystemWebhook } from '@/models/SystemWebhook.ts';
+import { MiUserProfile } from '@/models/UserProfile.ts';
+import { id } from './util/id.ts';
+import { MiUser } from './User.ts';
 
 /**
  * 通報受信時に通知を送信する方法.

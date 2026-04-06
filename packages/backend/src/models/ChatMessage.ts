@@ -4,10 +4,10 @@
  */
 
 import { PrimaryColumn, Entity, Index, JoinColumn, Column, ManyToOne } from 'typeorm';
-import { id } from './util/id.js';
-import { MiUser } from './User.js';
-import { MiDriveFile } from './DriveFile.js';
-import { MiChatRoom } from './ChatRoom.js';
+import { id } from './util/id.ts';
+import { MiUser } from './User.ts';
+import { MiDriveFile } from './DriveFile.ts';
+import { MiChatRoom } from './ChatRoom.ts';
 
 @Entity('chat_message')
 export class MiChatMessage {

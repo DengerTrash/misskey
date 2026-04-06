@@ -4,9 +4,9 @@
  */
 
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
-import { id } from './util/id.js';
-import { MiUser } from './User.js';
-import { MiChannel } from './Channel.js';
+import { id } from './util/id.ts';
+import { MiUser } from './User.ts';
+import { MiChannel } from './Channel.ts';
 
 @Entity('channel_muting')
 @Index(['userId', 'channelId'], {})
