@@ -25,10 +25,16 @@ async function loadConfig() {
 }
 
 async function copyFrontendFonts() {
-	await fs.cp('./packages/frontend/node_modules/three/examples/fonts', './built/_frontend_dist_/fonts', { dereference: true, recursive: true });
+	await fs.cp(
+		'./../../packages/frontend/node_modules/three/examples/fonts',
+		'./built/_frontend_dist_/fonts', {
+			dereference: true,
+			recursive: true
+		}
+	);
 }
 
-export async function buildAseets() {
+export async function buildAssets() {
 	await Promise.all([
 		copyFrontendFonts(),
 		loadConfig().then(config => (config as any)?.publishTarballInsteadOfProvideRepositoryUrl && buildTarball()),

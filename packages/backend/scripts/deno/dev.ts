@@ -5,9 +5,10 @@
 
 import { execa, execaNode } from 'execa';
 import process from "node:process";
+import { buildAssets } from '../../../../scripts/deno/build-assets.ts'
 
 /** @type {import('execa').ExecaChildProcess | undefined} */
-let backendProcess: any;
+let backendProcess: Deno.Command | undefined;
 
 async function execBuildAssets() {
 	await execa('pnpm', ['run', 'build-assets'], {
@@ -17,16 +18,22 @@ async function execBuildAssets() {
 	})
 }
 
-function execStart() {
+async function execStart() {
 	// pnpm run start を呼び出したいが、windowsだとプロセスグループ単位でのkillが出来ずゾンビプロセス化するので
 	// 上記と同等の動きをするコマンドで子・孫プロセスを作らないようにしたい
-	backendProcess = execaNode('./built/boot/entry.js', [], {
-		stdout: process.stdout,
-		stderr: process.stderr,
+	backendProcess = new Deno.Command(Deno.execPath(),{
+		args: ['run', '-A', '--sloppy-imports', '--watch', './src/bootleg/entry.ts'],
+		stdout: 'piped',
+		stderr: 'piped',
 		env: {
 			'NODE_ENV': 'development',
 		},
 	});
+	const backendStd = await backendProcess.spawn();
+
+	console.log(backendStd.stdout)
+	console.error(backendStd.stderr)
+
 }
 
 async function killProc() {
@@ -38,8 +45,12 @@ async function killProc() {
 	}
 };
 
+(async() => {
+	await buildAssets()
+	await execStart()
+})
 
-/**
+/*
 (async () => {
 	execaNode(
 		'./node_modules/nodemon/bin/nodemon.js',
@@ -59,10 +70,9 @@ async function killProc() {
 				// pnpm restartをbuildが終わる前にbuild-assetsが動いてしまうので、バラバラに呼び出す必要がある
 
 				await killProc();
-				await execBuildAssets();
-				execStart();
+				await buildAssets();
+				await execStart();
 			}
 		})
 })();
-
- */
+*/

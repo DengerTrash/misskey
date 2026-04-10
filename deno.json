@@ -4,5 +4,8 @@
 	"tasks": {
 		"dev": "deno run -A scripts/dev.ts"
 	},
+	"workspace": [
+		"packages/backend"
+	],
 	"exports": "./mod.ts"
 }

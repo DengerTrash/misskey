@@ -1,3 +1,4 @@
+
 /*
  * SPDX-FileCopyrightText: syuilo and misskey-project
  * SPDX-License-Identifier: AGPL-3.0-only
@@ -13,7 +14,7 @@ import process from 'node:process';
 import console from 'node:console';
 import chalk from 'chalk';
 import Xev from 'xev';
-import Logger from '@/logger.ts';
+import LoggerV2 from '@/logger.ts';
 import { envOption } from '../env.ts';
 import { masterMain } from './master.ts';
 import { workerMain } from './worker.ts';
@@ -23,14 +24,19 @@ import 'reflect-metadata';
 
 process.title = `Mediland (${cluster.isPrimary ? 'master' : 'worker'})`;
 
-//Error.stackTraceLimit = Infinity;
+Error.stackTraceLimit = Infinity;
 EventEmitter.defaultMaxListeners = 128;
 
-const logger = new Logger('core', 'cyan');
+const logger = new LoggerV2('core', 'cyan');
 const clusterLogger = logger.createSubLogger('cluster', 'orange');
 const ev = new Xev();
 
 //#region Events
+
+await workerMain();
+
+/**
+Denoで動かす関係上分散処理は一時的に無効化されています。
 
 // Listen new workers
 cluster.on('fork', worker => {
@@ -80,12 +86,12 @@ if (!envOption.disableClustering) {
 		await workerMain();
 	} else {
 		throw new Error('Unknown process type');
-	}
+}
 } else {
 	// 非clusterの場合はMasterのみが起動するため、Workerの処理は行わない(cluster.isWorker === trueの状態でこのブロックに来ることはない)
-	logger.info(`Start main process... pid: ${process.pid}`);
-	await masterMain();
-	ev.mount();
+logger.info(`Start main process... pid: ${process.pid}`);
+await masterMain();
+ev.mount();
 }
 
 process.on('message', msg => {
@@ -96,8 +102,8 @@ process.on('message', msg => {
 			if (process.send != null) process.send('gc ok');
 		} else {
 			logger.warn('Manual GC requested but gc is not available. Start the process with --expose-gc to enable this feature.');
-		}
 	}
+}
 });
 
 readyRef.value = true;
@@ -107,3 +113,5 @@ readyRef.value = true;
 if (process.send) {
 	process.send('ok');
 }
+
+*/

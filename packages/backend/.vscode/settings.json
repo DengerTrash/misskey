@@ -5,6 +5,8 @@
 	},
 	"editor.formatOnSave": true,
 	"editor.codeActionsOnSave": {
-		"source.fixAll": true
-	}
+		"source.fixAll": "explicit"
+	},
+	"deno.enable": true,
+	"js/ts.tsserver.experimental.enableProjectDiagnostics": false
 }

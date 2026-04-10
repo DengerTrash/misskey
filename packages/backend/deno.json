@@ -2,7 +2,9 @@
 	"name": "backend",
 	"exports": "./mod.ts",
 	"imports": {
-		"$hono/": "https://deno.land/x/hono@v3.2.1/",
+
+		"$hono": "jsr:@hono/hono",
+		"$hono/": "jsr:@hono/hono/",
 		"@/": "./src/",
 
 		"crypto": "node:crypto",
@@ -14,6 +16,6 @@
 	},
 	"tasks": {
 		"compile-config": "deno run --allow-run --allow-sys --allow-env --allow-read --allow-net --allow-write ./scripts/deno/compile_config.ts",
-		"dev": "deno task compile-config && deno run --sloppy-imports --allow-ffi --allow-read --allow-env --watch ./src/bootleg/entry.ts"
+		"dev": "deno task compile-config && deno run --allow-net --sloppy-imports --allow-ffi --allow-read --allow-env --watch ./src/bootleg/entry.ts"
 	}
 }

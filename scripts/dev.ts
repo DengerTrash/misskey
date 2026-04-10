@@ -8,7 +8,9 @@ import { fileURLToPath } from 'node:url';
 
 import clean from "./deno/clean.ts";
 import { build as preBuild } from "./deno/build-pre.ts";
-import { buildAseets } from "./deno/build-assets.ts";
+import { buildAssets } from "./deno/build-assets.ts";
+import { execa } from "execa";
+import process from "node:process";
 
 const _filename = fileURLToPath(import.meta.url);
 const _dirname = dirname(_filename);
@@ -17,12 +19,39 @@ await clean();
 
 await preBuild();
 
-await buildAseets();
+await buildAssets();
 
 // Denoの場合、バックエンドのビルドは不要です
 
 
+const backend = new Deno.Command(Deno.execPath(),{
+	args: ['task', 'dev'],
+	cwd: "./packages/backend"
+});
+const backendStd = await backend.output();
+console.log(backendStd?.stdout)
+console.error(backendStd?.stderr)
+
 /**
+	execa('pnpm', ['--filter', 'backend...', 'build'], {
+		cwd: _dirname + '/../',
+		stdout: process.stdout,
+		stderr: process.stderr,
+	}),
+
+*/
+
+await Promise.all([
+	//execa('pnpm', ['build-pre'], {
+	//	cwd: _dirname + '/../',
+	//	stdout: process.stdout,
+	//	stderr: process.stderr,
+	//}),
+	//execa('pnpm', ['build-assets'], {
+	//	cwd: _dirname + '/../',
+	//	stdout: process.stdout,
+	//	stderr: process.stderr,
+	//}),
 	execa('pnpm', ['--filter', 'backend...', 'build'], {
 		cwd: _dirname + '/../',
 		stdout: process.stdout,
@@ -39,6 +68,7 @@ await buildAseets();
 		stdout: process.stdout,
 		stderr: process.stderr,
 	}),
+]);
 
 execa('pnpm', ['build-pre', '--watch'], {
 	cwd: _dirname + '/../',
@@ -105,5 +135,3 @@ execa('pnpm', ['--filter', 'misskey-bubble-game', 'watch', '--no-clean'], {
 	stdout: process.stdout,
 	stderr: process.stderr,
 });
-
-*/

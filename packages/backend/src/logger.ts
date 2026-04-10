@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import cluster from 'node:cluster';
+//import cluster from 'node:cluster';
 import console from 'node:console';
+import process from 'node:process';
 import chalk from 'chalk';
 import { default as convertColor } from 'color-convert';
 import { format as dateFormat } from 'date-fns';
@@ -20,9 +21,9 @@ type Context = {
 type Level = 'error' | 'success' | 'warning' | 'debug' | 'info';
 
 // eslint-disable-next-line import/no-default-export
-export default class Logger {
+export default class LoggerV2 {
 	private context: Context;
-	private parentLogger: Logger | null = null;
+	private parentLogger: LoggerV2 | null = null;
 
 	constructor(context: string, color?: KEYWORD) {
 		this.context = {
@@ -32,14 +33,20 @@ export default class Logger {
 	}
 
 	@bindThis
-	public createSubLogger(context: string, color?: KEYWORD): Logger {
-		const logger = new Logger(context, color);
+	public createSubLogger(context: string, color?: KEYWORD): LoggerV2 {
+		const logger = new LoggerV2(context, color);
 		logger.parentLogger = this;
 		return logger;
 	}
 
 	@bindThis
-	private log(level: Level, message: string, data?: Record<string, any> | null, important = false, subContexts: Context[] = []): void {
+	private log(
+		level: Level,
+		message: string,
+		data?: Record<string, any> | null,
+		important = false,
+		subContexts: Context[] = [],
+	): void {
 		if (envOption.quiet) return;
 
 		if (this.parentLogger) {
