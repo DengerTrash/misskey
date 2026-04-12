@@ -4,9 +4,9 @@
  */
 
 import { PrimaryColumn, Entity, Index, JoinColumn, Column, ManyToOne } from 'typeorm';
-import { id } from './util/id.ts';
-import { MiUser } from './User.ts';
-import { MiChannel } from './Channel.ts';
+import { id } from './util/id.js';
+import { MiUser } from './User.js';
+import { MiChannel } from './Channel.js';
 
 @Entity('channel_following')
 @Index(['followerId', 'followeeId'], { unique: true })

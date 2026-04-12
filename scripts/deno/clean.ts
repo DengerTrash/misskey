@@ -8,7 +8,6 @@ import * as fs from 'node:fs';
 const __dirname = import.meta.dirname;
 const clean = async () => {
 	await fs.rmSync(__dirname + '/../../packages/backend/built', { recursive: true, force: true });
-	await fs.rmSync(__dirname + '/../../packages/backend-mediland/built', { recursive: true, force: true });
 	await fs.rmSync(__dirname + '/../../packages/backend/src-js', { recursive: true, force: true });
 	await fs.rmSync(__dirname + '/../../packages/frontend-shared/built', { recursive: true, force: true });
 	await fs.rmSync(__dirname + '/../../packages/frontend/built', { recursive: true, force: true });

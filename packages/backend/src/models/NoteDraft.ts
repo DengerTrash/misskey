@@ -4,12 +4,12 @@
  */
 
 import { Entity, Index, JoinColumn, Column, PrimaryColumn, ManyToOne } from 'typeorm';
-import { noteVisibilities, noteReactionAcceptances } from '@/types.ts';
-import { id } from './util/id.ts';
-import { MiUser } from './User.ts';
-import { MiChannel } from './Channel.ts';
-import { MiNote } from './Note.ts';
-import type { MiDriveFile } from './DriveFile.ts';
+import { noteVisibilities, noteReactionAcceptances } from '@/types.js';
+import { id } from './util/id.js';
+import { MiUser } from './User.js';
+import { MiChannel } from './Channel.js';
+import { MiNote } from './Note.js';
+import type { MiDriveFile } from './DriveFile.js';
 
 @Entity('note_draft')
 @Index('IDX_NOTE_DRAFT_FILE_IDS', { synchronize: false }) // GIN for fileIds in production
@@ -48,7 +48,7 @@ export class MiNoteDraft {
 	@JoinColumn()
 	public renote: MiNote | null;
 
-	// TODO: varcharにしたい(Note.tsと同じ)
+	// TODO: varcharにしたい(Note.jsと同じ)
 	@Column('text', {
 		nullable: true,
 	})

@@ -4,8 +4,8 @@
  */
 
 import { Entity, PrimaryColumn, Index, Column } from 'typeorm';
-import { id } from './util/id.ts';
-import type { MiUser } from './User.ts';
+import { id } from './util/id.js';
+import type { MiUser } from './User.js';
 
 @Entity('hashtag')
 export class MiHashtag {

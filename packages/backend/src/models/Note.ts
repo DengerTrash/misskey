@@ -4,11 +4,11 @@
  */
 
 import { Entity, Index, JoinColumn, Column, PrimaryColumn, ManyToOne } from 'typeorm';
-import { noteVisibilities, noteReactionAcceptances } from '@/types.ts';
-import { id } from './util/id.ts';
-import { MiUser } from './User.ts';
-import { MiChannel } from './Channel.ts';
-import type { MiDriveFile } from './DriveFile.ts';
+import { noteVisibilities, noteReactionAcceptances } from '@/types.js';
+import { id } from './util/id.js';
+import { MiUser } from './User.js';
+import { MiChannel } from './Channel.js';
+import type { MiDriveFile } from './DriveFile.js';
 
 // Note: When you create a new index for existing column of this table,
 // it might be better to index concurrently under isConcurrentIndexMigrationEnabled flag
@@ -16,7 +16,7 @@ import type { MiDriveFile } from './DriveFile.ts';
 // and it will make a long lock to create index in most cases.
 // Please note that `CREATE INDEX CONCURRENTLY` is not supported in transaction,
 // so you need to set `transaction = false` in migration if isConcurrentIndexMigrationEnabled() is true.
-// Please refer 1745378064470-composite-note-index.ts for example.
+// Please refer 1745378064470-composite-note-index.js for example.
 // You should not use `@Index({ concurrent: true })` decorator because database initialization for test will fail
 // because it will always run CREATE INDEX in transaction based on decorators.
 // Not appending `{ concurrent: true }` to `@Index` will not cause any problem in production,

@@ -6,14 +6,14 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 import * as Redis from 'ioredis';
-import type { FollowingsRepository, InstancesRepository, MiMeta } from '@/models/_.ts';
-import { DI } from '@/di-symbols.ts';
-import { bindThis } from '@/decorators.ts';
-import { acquireChartInsertLock } from '@/misc/distributed-lock.ts';
-import Chart from '../core.ts';
-import { ChartLoggerService } from '../ChartLoggerService.ts';
-import { name, schema } from './entities/federation.ts';
-import type { KVs } from '../core.ts';
+import type { FollowingsRepository, InstancesRepository, MiMeta } from '@/models/_.js';
+import { DI } from '@/di-symbols.js';
+import { bindThis } from '@/decorators.js';
+import { acquireChartInsertLock } from '@/misc/distributed-lock.js';
+import Chart from '../core.js';
+import { ChartLoggerService } from '../ChartLoggerService.js';
+import { name, schema } from './entities/federation.js';
+import type { KVs } from '../core.js';
 
 /**
  * フェデレーションに関するチャート

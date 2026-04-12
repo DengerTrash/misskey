@@ -4,9 +4,9 @@
  */
 
 import { Entity, Index, JoinColumn, Column, ManyToOne, PrimaryColumn } from 'typeorm';
-import { id } from './util/id.ts';
-import { MiNote } from './Note.ts';
-import { MiClip } from './Clip.ts';
+import { id } from './util/id.js';
+import { MiNote } from './Note.js';
+import { MiClip } from './Clip.js';
 
 @Entity('clip_note')
 @Index(['noteId', 'clipId'], { unique: true })

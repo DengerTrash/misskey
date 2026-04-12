@@ -148,7 +148,6 @@
             "npm:json5@2.2.3",
             "npm:jsonld@9.0.0",
             "npm:juice@11.1.1",
-            "npm:mediland@1.0.0",
             "npm:meilisearch@0.55.0",
             "npm:mfm-js@0.25.0",
             "npm:mime-types@3.0.2",

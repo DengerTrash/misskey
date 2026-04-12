@@ -17,7 +17,6 @@
 		"packages/frontend-builder",
 		"packages/sw",
 		"packages/backend",
-		"packages/backend-mediland",
 		"packages/frontend",
 		"packages/frontend-embed"
 	],

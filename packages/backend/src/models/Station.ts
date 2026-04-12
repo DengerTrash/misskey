@@ -1,5 +1,5 @@
 import { Entity } from 'typeorm';
-import type { MiUser } from './User.ts';
+import type { MiUser } from './User.js';
 
 interface Station {
 	coreId: string;

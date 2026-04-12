@@ -4,8 +4,8 @@
  */
 
 import { PrimaryColumn, Entity, Index, JoinColumn, Column, ManyToOne } from 'typeorm';
-import { id } from './util/id.ts';
-import { MiUser } from './User.ts';
+import { id } from './util/id.js';
+import { MiUser } from './User.js';
 
 @Entity('follow_request')
 @Index(['followerId', 'followeeId'], { unique: true })

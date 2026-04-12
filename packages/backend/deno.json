@@ -10,7 +10,7 @@
 		"crypto": "node:crypto",
 		"events": "node:events",
 
-		"misskey-reversi": "../misskey-reversi/src/mod.ts",
+		"misskey-reversi": "../misskey-reversi/src/index.ts",
 		"misskey-js": "../misskey-js/src/index.ts",
 		"i18n/": "../i18n/src/"
 	},
