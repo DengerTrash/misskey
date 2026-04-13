@@ -34,7 +34,7 @@ export async function server() {
 		//app.get(QueueStatsService).start();
 		//app.get(ServerStatsService).start();
 	}
-	Deno.serve(handler)
+	Deno.serve(app.fetch)
 }
 
 export async function jobQueue() {
