@@ -2,7 +2,9 @@
 	"name": "misskey-deno",
 	"version": "2026.4.5-beta.0",
 	"tasks": {
-		"dev": "deno run -A scripts/dev.ts"
+		"compile-config": "cd packages/backend && deno task compile-config",
+		"dev": "deno run -A scripts/dev.ts",
+		"start": "deno task compile-config && deno run -A ./built/boot/entry.js"
 	},
 	"workspace": [
 		"packages/backend"

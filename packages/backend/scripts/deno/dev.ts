@@ -6,9 +6,10 @@
 import { execa, execaNode } from 'execa';
 import process from "node:process";
 import { buildAssets } from '../../../../scripts/deno/build-assets.ts'
+import start from "../../src-deno/bootleg/entry.ts";
 
 /** @type {import('execa').ExecaChildProcess | undefined} */
-let backendProcess: Deno.Command | undefined;
+let backendProcess: void | undefined;
 
 async function execBuildAssets() {
 	await execa('pnpm', ['run', 'build-assets'], {
@@ -21,18 +22,7 @@ async function execBuildAssets() {
 async function execStart() {
 	// pnpm run start を呼び出したいが、windowsだとプロセスグループ単位でのkillが出来ずゾンビプロセス化するので
 	// 上記と同等の動きをするコマンドで子・孫プロセスを作らないようにしたい
-	backendProcess = new Deno.Command(Deno.execPath(),{
-		args: ['run', '-A', '--sloppy-imports', '--watch', './src/bootleg/entry.ts'],
-		stdout: 'piped',
-		stderr: 'piped',
-		env: {
-			'NODE_ENV': 'development',
-		},
-	});
-	const backendStd = await backendProcess.spawn();
-
-	console.log(backendStd.stdout)
-	console.error(backendStd.stderr)
+	backendProcess = await start()
 
 }
 

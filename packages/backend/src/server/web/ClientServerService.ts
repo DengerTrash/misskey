@@ -226,7 +226,7 @@ export class ClientServerService {
 			console.log(`[ClientServerService] Using built frontend vite assets. ${frontendViteOut}`);
 			fastify.register((fastify, options, done) => {
 				fastify.register(fastifyStatic, {
-					root: frontendViteOut,
+					root: ViteOut,
 					prefix: '/vite/',
 					maxAge: ms('30 days'),
 					immutable: true,

@@ -8,14 +8,18 @@
  * Misskey Entry Point!
  */
 
+import { masterMain } from "./master.ts";
 import { workerMain } from './worker.ts';
 
 import 'reflect-metadata';
 
 //#region Events
 
-await workerMain();
+//await workerMain();
 
+export default async function start(){
+	await masterMain();
+}
 /**
 Denoで動かす関係上分散処理は一時的に無効化されています。
 

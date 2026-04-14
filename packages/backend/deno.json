@@ -16,7 +16,7 @@
 	},
 	"tasks": {
 		"compile-config": "deno run --allow-run --allow-sys --allow-env --allow-read --allow-net --allow-write ./scripts/deno/compile_config.ts",
-		"dev": "deno task compile-config && deno run --allow-net --sloppy-imports --allow-ffi --allow-read --allow-env --watch ./src-deno/bootleg/entry.ts"
+		"dev": "deno task compile-config && deno run --allow-net --sloppy-imports --allow-ffi --allow-read --allow-env --watch ./scripts/deno/dev.ts"
 	},
 	"compilerOptions": {
 		"lib": [

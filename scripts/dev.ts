@@ -42,16 +42,16 @@ console.error(backendStd?.stderr)
 */
 
 await Promise.all([
-	//execa('pnpm', ['build-pre'], {
-	//	cwd: _dirname + '/../',
-	//	stdout: process.stdout,
-	//	stderr: process.stderr,
-	//}),
-	//execa('pnpm', ['build-assets'], {
-	//	cwd: _dirname + '/../',
-	//	stdout: process.stdout,
-	//	stderr: process.stderr,
-	//}),
+	execa('pnpm', ['build-pre'], {
+		cwd: _dirname + '/../',
+		stdout: process.stdout,
+		stderr: process.stderr,
+	}),
+	execa('pnpm', ['build-assets'], {
+		cwd: _dirname + '/../',
+		stdout: process.stdout,
+		stderr: process.stderr,
+	}),
 	execa('pnpm', ['--filter', 'backend...', 'build'], {
 		cwd: _dirname + '/../',
 		stdout: process.stdout,
