@@ -11,21 +11,21 @@ import { default as convertColor } from 'color-convert';
 import { format as dateFormat } from 'date-fns';
 import { bindThis } from '@/decorators.js';
 import { envOption } from './env.js';
-import type { KEYWORD } from 'color-convert/conversions.js';
+import type { Keyword } from 'color-convert';
 
 type Context = {
 	name: string;
-	color?: KEYWORD;
+	color?: Keyword;
 };
 
 type Level = 'error' | 'success' | 'warning' | 'debug' | 'info';
 
 // eslint-disable-next-line import/no-default-export
-export default class LoggerV2 {
+export default class Logger {
 	private context: Context;
-	private parentLogger: LoggerV2 | null = null;
+	private parentLogger: Logger | null = null;
 
-	constructor(context: string, color?: KEYWORD) {
+	constructor(context: string, color?: Keyword) {
 		this.context = {
 			name: context,
 			color: color,
@@ -33,8 +33,8 @@ export default class LoggerV2 {
 	}
 
 	@bindThis
-	public createSubLogger(context: string, color?: KEYWORD): LoggerV2 {
-		const logger = new LoggerV2(context, color);
+	public createSubLogger(context: string, color?: Keyword): Logger {
+		const logger = new Logger(context, color);
 		logger.parentLogger = this;
 		return logger;
 	}
