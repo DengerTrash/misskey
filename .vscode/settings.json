@@ -2,8 +2,8 @@
 	"search.exclude": {
 		"**/node_modules": true
 	},
-	"typescript.tsdk": "node_modules/typescript/lib",
-	"typescript.enablePromptUseWorkspaceTsdk": true,
+	"js/ts.tsdk.path": "node_modules/typescript/lib",
+	"js/ts.tsdk.promptToUseWorkspaceVersion": true,
 	"files.associations": {
 		"*.test.ts": "typescript"
 	},
@@ -16,5 +16,6 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll": "explicit"
 	},
-	"editor.formatOnSave": false
+	"editor.formatOnSave": false,
+	"deno.enable": true
 }

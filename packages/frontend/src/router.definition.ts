@@ -600,6 +600,10 @@ export const ROUTE_DEF = [{
 	loginRequired: false,
 }, {
 	//こっから追加要素
+	path: '/stations',
+	component: page(() => import('@/pages/stations/index.vue')),
+	loginRequired: false,
+}, {
 	path: '/stations/:stationId/projects',
 	component: page(() => import('@/pages/stations/projects.vue')),
 	loginRequired: false,
