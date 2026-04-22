@@ -11,5 +11,8 @@
 		"typecheck": "vue-tsc --noEmit",
 		"eslint": "eslint --quiet \"src/**/*.{ts,vue}\"",
 		"lint": "pnpm typecheck && pnpm eslint"
+	},
+	"imports": {
+		"@/": "src/"
 	}
 }

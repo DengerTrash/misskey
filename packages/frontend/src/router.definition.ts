@@ -24,7 +24,7 @@ function chatPage(...args: Parameters<typeof page>) {
 export const ROUTE_DEF = [{
 	name: 'index',
 	path: '/',
-	component: $i ? PageTimeline : page(() => import('@/pages/welcome.vue')),
+	component: $i ? PageTimeline : page(() => import('@/pages/welcome.tsx')),
 }, {
 	path: '/timeline',
 	component: PageTimeline,

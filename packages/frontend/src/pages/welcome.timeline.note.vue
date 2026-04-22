@@ -7,7 +7,9 @@ SPDX-License-Identifier: AGPL-3.0-only
 <div :key="note.id" :class="$style.note">
 	<div class="_panel _gaps_s" :class="$style.content">
 		<div v-if="note.cw != null" :class="$style.richcontent">
-			<div><Mfm :text="note.cw" :author="note.user"/></div>
+			<div>
+				<Mfm :text="note.cw" :author="note.user"/>
+			</div>
 			<MkCwButton v-model="showContent" :text="note.text" :renote="note.renote" :files="note.files" :poll="note.poll" style="margin: 4px 0;"/>
 			<div v-if="showContent">
 				<MkA v-if="note.replyId" class="reply" :to="`/notes/${note.replyId}`"><i class="ti ti-arrow-back-up"></i></MkA>

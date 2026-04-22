@@ -4,11 +4,22 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <template>
-<PageWithHeader v-model:tab="tab" :actions="headerActions" :tabs="headerTabs" :swipable="true">
+<PageWithHeader
+	v-model:tab="tab"
+	:actions="headerActions"
+	:tabs="headerTabs"
+	:swipable="true"
+>
 	<div class="_spacer" style="--MI_SPACER-w: 1200px;">
 		<div v-if="tab === 'search'" :class="$style.searchRoot">
 			<div class="_gaps">
-				<MkInput v-model="searchQuery" :large="true" :autofocus="true" type="search" @enter="search">
+				<MkInput
+					v-model="searchQuery"
+					:large="true"
+					:autofocus="true"
+					type="search"
+					@enter="search"
+				>
 					<template #prefix><i class="ti ti-search"></i></template>
 				</MkInput>
 				<MkRadios
@@ -25,7 +36,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 			<MkFoldableSection v-if="channelPaginator">
 				<template #header>{{ i18n.ts.searchResult }}</template>
-				<MkChannelList :key="key" :paginator="channelPaginator"/>
+				<MediStationList :key="key" :paginator="channelPaginator"/>
 			</MkFoldableSection>
 		</div>
 		<div v-if="tab === 'featured'">
@@ -65,6 +76,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 import { computed, markRaw, onMounted, ref, shallowRef } from 'vue';
 import MkChannelPreview from '@/components/MkChannelPreview.vue';
 import MkChannelList from '@/components/MkChannelList.vue';
+import MediStationList from '@/components/monoComponent/stations/stationList';
 import MkPagination from '@/components/MkPagination.vue';
 import MkInput from '@/components/MkInput.vue';
 import MkRadios from '@/components/MkRadios.vue';

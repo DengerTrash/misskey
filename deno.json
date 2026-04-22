@@ -9,5 +9,12 @@
 	"workspace": [
 		"packages/backend"
 	],
-	"exports": "./mod.ts"
+	"exports": "./mod.ts",
+	"compilerOptions": {
+		"jsx": "preserve",
+		"jsxImportSource": "vue"
+	},
+	"fmt": {
+		"useTabs": true
+	}
 }

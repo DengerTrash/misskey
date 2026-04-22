@@ -11,7 +11,12 @@ SPDX-License-Identifier: AGPL-3.0-only
 		:class="[$style.scrollBoxMain, { [$style.scrollIntro]: (scrollState === 'intro'), [$style.scrollLoop]: (scrollState === 'loop') }]"
 		@animationend="changeScrollState"
 	>
-		<XNote v-for="note in notes" :key="`${note.id}_1`" :class="$style.note" :note="note"/>
+		<XNote
+			v-for="note in notes"
+			:key="`${note.id}_1`"
+			:class="$style.note"
+			:note="note"
+		/>
 	</div>
 	<div v-if="isScrolling" class="_gaps" :class="[$style.scrollBoxSub, { [$style.scrollIntro]: (scrollState === 'intro'), [$style.scrollLoop]: (scrollState === 'loop') }]">
 		<XNote v-for="note in notes" :key="`${note.id}_2`" :class="$style.note" :note="note"/>

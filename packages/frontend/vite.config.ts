@@ -1,5 +1,6 @@
 import path from 'path';
 import pluginVue from '@vitejs/plugin-vue';
+import pluginVueJsx from '@vitejs/plugin-vue-jsx';
 import pluginGlsl from 'vite-plugin-glsl';
 import { replacePlugin } from 'rolldown/plugins';
 import type { UserConfig } from 'vite';
@@ -115,6 +116,7 @@ export function getConfig(): UserConfig {
 			pluginWatchLocales(),
 			...searchIndexes.map(options => pluginCreateSearchIndex(options)),
 			pluginVue(),
+			pluginVueJsx(),
 			pluginRemoveUnrefI18n(),
 			pluginUnwindCssModuleClassName(),
 			pluginJson5(),
