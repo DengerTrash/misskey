@@ -33,6 +33,7 @@ import { OpenApiServerService } from './api/openapi/OpenApiServerService.ts';
 import { OAuth2ProviderService } from './oauth/OAuth2ProviderService.ts';
 import { Hono } from "hono";
 import { Buffer } from "node:buffer";
+import Honoland from "./apiv2/v2.ts";
 
 const _dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -83,9 +84,7 @@ export class ServerService implements OnApplicationShutdown {
 		});
 		this.#fastify = fastify;
 
-		const hono = new Hono({
-
-		});
+		const hono = Honoland;
 		this.#hono = hono;
 
 		// HSTS

@@ -1,12 +1,14 @@
-import { Hono } from "hono";
+import { Hono, HonoRequest } from "hono";
 import * as greet from './endpoints/greet.ts'
-export const Honoland = new Hono();
-Honoland.get()
-
+const Honoland = new Hono();
+const gre = greet.default
+Honoland.get(gre.path,(c) => c.text(gre.execute(c.req)))
 interface EndpointObject {
 	path: string;
-	execute(): Promise<Hono>
+	execute(req: HonoRequest): string
 }
 export function Endpoint(list: EndpointObject){
-
+	return list;
 }
+
+export default Honoland;
