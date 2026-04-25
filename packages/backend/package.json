@@ -175,8 +175,9 @@
 		"vary": "1.1.2",
 		"web-push": "3.6.7",
 		"ws": "8.20.0",
-		"xev": "3.0.2"
+		"xev": "3.0.2",
 
+		"hono": "4.12.14"
 	},
 	"devDependencies": {
 		"@jest/globals": "29.7.0",

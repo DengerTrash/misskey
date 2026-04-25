@@ -31,6 +31,8 @@ import { HealthServerService } from './HealthServerService.ts';
 import { ClientServerService } from './web/ClientServerService.ts';
 import { OpenApiServerService } from './api/openapi/OpenApiServerService.ts';
 import { OAuth2ProviderService } from './oauth/OAuth2ProviderService.ts';
+import { Hono } from "hono";
+import { Buffer } from "node:buffer";
 
 const _dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -38,6 +40,7 @@ const _dirname = fileURLToPath(new URL('.', import.meta.url));
 export class ServerService implements OnApplicationShutdown {
 	private logger: Logger;
 	#fastify: FastifyInstance;
+	#hono: Hono;
 
 	constructor(
 		@Inject(DI.config)
@@ -73,12 +76,17 @@ export class ServerService implements OnApplicationShutdown {
 	}
 
 	@bindThis
-	public async launch(): Promise<void> {
+	public async launch(useHono = true): Promise<void> {
 		const fastify = Fastify({
 			trustProxy: this.config.trustProxy,
 			logger: false,
 		});
 		this.#fastify = fastify;
+
+		const hono = new Hono({
+
+		});
+		this.#hono = hono;
 
 		// HSTS
 		// 6months (15552000sec)
@@ -139,6 +147,45 @@ export class ServerService implements OnApplicationShutdown {
 				].join('\n'));
 			});
 		}
+
+		// --- 改造箇所3: Fastifyのルート登録（fastify.registerなどが並んでいる箇所の上あたり） ---
+		if (useHono) {
+			// Honoで処理させたいパスのプレフィックスを指定（将来的に増やしていく）
+			fastify.all('/apiv2*', async (request, reply) => {
+				// 1. Fastifyのリクエストを、標準のWeb Requestに変換
+				const protocol = request.protocol; // http or https
+				const host = request.headers.host;
+				const url = new URL(request.url, `${protocol}://${host}`);
+
+				const init: RequestInit = {
+					method: request.method,
+					headers: request.headers as HeadersInit,
+				};
+
+				// GETとHEAD以外はボディをそのまま渡す
+				if (request.method !== 'GET' && request.method !== 'HEAD') {
+					// ※現在Fastifyはデフォルトでbodyをパースしてしまうので、
+					// 確実な横流しのためには raw なバッファを渡す必要があります。
+					// ひとまずはJSON等を文字列化して渡すか、fastifyRawBodyを利用します。
+					init.body = typeof request.body === 'object' ? JSON.stringify(request.body) : request.body as any;
+				}
+
+				const standardReq = new Request(url, init);
+
+				// 2. Honoに処理を丸投げする
+				const standardRes = await hono.fetch(standardReq);
+
+				// 3. Honoから返ってきた標準Web ResponseをFastifyのReplyに戻す
+				reply.status(standardRes.status);
+				standardRes.headers.forEach((value, key) => {
+					reply.header(key, value);
+				});
+
+				// レスポンスボディをバッファとして返す
+				const arrayBuffer = await standardRes.arrayBuffer();
+				return Buffer.from(arrayBuffer);
+			});
+		};
 
 		fastify.register(this.apiServerService.createServer, { prefix: '/api' });
 		fastify.register(this.openApiServerService.createServer);
