@@ -1,7 +1,7 @@
 import { defineComponent } from "vue";
 import * as Misskey from 'misskey-js';
 import type { IPaginator, ExtractorFunction } from '@/utility/paginator.js';
-import MkChannelPreview from '@/components/MkChannelPreview.vue';
+import stationPreview from '@/components/monoComponent/stations/stationPreview.vue';
 import MkPagination from '@/components/MkPagination.vue';
 
 const MediStationList = defineComponent({
@@ -18,7 +18,7 @@ const MediStationList = defineComponent({
 		<template>
 			<MkPagination paginator="paginator">
 				<MkResult type="empty"/>
-				<MkChannelPreview
+				<stationPreview
 					v-for="item in items"
 					key="item.id" class="_margin"
 					channel="extractor(item)"

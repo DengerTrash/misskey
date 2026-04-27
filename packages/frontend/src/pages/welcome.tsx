@@ -24,13 +24,19 @@ export default defineComponent({
 			icon: null,
 		}));
 		return() => (
-			<template>
-				<div v-if="instance">
-					<XSetup v-if="instance.requireSetup"/>
-					<XEntranceClassic v-else-if="(instance.clientOptions.entrancePageStyle ?? 'classic') === 'classic'"/>
-					<XEntranceSimple v-else/>
-				</div>
-			</template>
+			<>
+				{instance && (
+					<div v-if="instance">
+						{
+							instance?.requireSetup
+							? <XSetup/>
+							: (instance.clientOptions.entrancePageStyle ?? 'classic') === 'classic'
+							? <XEntranceClassic/>
+							: <XEntranceSimple/>
+						}
+					</div>
+				)}
+			</>
 		)
 	},
 

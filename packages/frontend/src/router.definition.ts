@@ -608,6 +608,10 @@ export const ROUTE_DEF = [{
 	component: page(() => import('@/pages/stations/projects.vue')),
 	loginRequired: false,
 }, {
+	path: '/tette',
+	component: page(() => import('@/pages/test/tette.tsx')),
+	loginRequired: false,
+}, {
 	// テスト用リダイレクト設定。ログイン中ユーザのプロフィールにリダイレクトする
 	path: '/redirect-test',
 	redirect: $i ? `@${$i.username}` : '/',

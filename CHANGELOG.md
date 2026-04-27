@@ -1,3 +1,6 @@
+# 2026.4.27 (DIFF)
+- HonoをServerServiceに同居させる改造を実施
+
 # 2026.4.25 (DIFF)
 - welcomeのバグを修正
 

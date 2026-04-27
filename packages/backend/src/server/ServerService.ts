@@ -33,7 +33,7 @@ import { OpenApiServerService } from './api/openapi/OpenApiServerService.ts';
 import { OAuth2ProviderService } from './oauth/OAuth2ProviderService.ts';
 import { Hono } from "hono";
 import { Buffer } from "node:buffer";
-import Honoland from "./apiv2/v2.ts";
+import initHonoland from "./apiv2/v2.ts";
 
 const _dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -84,7 +84,7 @@ export class ServerService implements OnApplicationShutdown {
 		});
 		this.#fastify = fastify;
 
-		const hono = Honoland;
+		const hono = initHonoland();
 		this.#hono = hono;
 
 		// HSTS
@@ -149,8 +149,8 @@ export class ServerService implements OnApplicationShutdown {
 
 		// --- 改造箇所3: Fastifyのルート登録（fastify.registerなどが並んでいる箇所の上あたり） ---
 		if (useHono) {
-			// Honoで処理させたいパスのプレフィックスを指定（将来的に増やしていく）
-			fastify.all('/apiv2*', async (request, reply) => {
+
+			const yokonagashi = async(request, reply) => {
 				// 1. Fastifyのリクエストを、標準のWeb Requestに変換
 				const protocol = request.protocol; // http or https
 				const host = request.headers.host;
@@ -183,7 +183,11 @@ export class ServerService implements OnApplicationShutdown {
 				// レスポンスボディをバッファとして返す
 				const arrayBuffer = await standardRes.arrayBuffer();
 				return Buffer.from(arrayBuffer);
-			});
+			};
+
+			// Honoで処理させたいパスのプレフィックスを指定（将来的に増やしていく）
+			fastify.all('/apiv2*',async(request,reply) => await yokonagashi(request,reply))
+			fastify.all('/api/stations*',async(request,reply) => await yokonagashi(request,reply))
 		};
 
 		fastify.register(this.apiServerService.createServer, { prefix: '/api' });

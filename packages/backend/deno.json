@@ -23,6 +23,7 @@
 			"deno.window",
 			"deno.unstable",
 			"node"
-		]
+		],
+		"experimentalDecorators": true
 	}
 }

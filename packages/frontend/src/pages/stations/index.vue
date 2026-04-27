@@ -42,7 +42,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 		<div v-if="tab === 'featured'">
 			<MkPagination v-slot="{items}" :paginator="featuredPaginator">
 				<div :class="$style.root">
-					<MkChannelPreview v-for="channel in items" :key="channel.id" :channel="channel"/>
+					<MediStationList v-for="channel in items" :key="channel.id" :channel="channel"/>
 				</div>
 			</MkPagination>
 		</div>
