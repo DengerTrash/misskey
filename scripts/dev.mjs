@@ -117,9 +117,12 @@ execa('pnpm', ['--filter', 'misskey-bubble-game', 'watch', '--no-clean'], {
 	stdout: process.stdout,
 	stderr: process.stderr,
 });
+/**
 
 execa('deno', ['run', '--watch', '-A', 'packages/backend/src-deno/main.ts'], {
 	cwd: _dirname + '/../',
 	stdout: process.stdout,
 	stderr: process.stderr,
 });
+
+*/

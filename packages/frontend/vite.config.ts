@@ -110,6 +110,9 @@ export function getConfig(): UserConfig {
 			headers: { // なんか効かない
 				'X-Frame-Options': 'DENY',
 			},
+  	  watch: {
+    	  ignored: ['**/mod.ts'], // mod.tsの変更を無視
+    	},
 		},
 
 		plugins: [
@@ -173,6 +176,7 @@ export function getConfig(): UserConfig {
 				'firefox116',
 				'safari16',
 			],
+
 			manifest: 'manifest.json',
 			rolldownOptions: {
 				experimental: {
@@ -223,11 +227,14 @@ export function getConfig(): UserConfig {
 			commonjsOptions: {
 				include: [/misskey-js/, /misskey-reversi/, /misskey-bubble-game/, /node_modules/],
 			},
+
+
 		},
 
 		worker: {
 			format: 'es',
 		},
+
 
 		test: {
 			environment: 'happy-dom',

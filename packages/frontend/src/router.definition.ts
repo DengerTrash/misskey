@@ -599,13 +599,17 @@ export const ROUTE_DEF = [{
 	component: page(() => import('@/pages/debug.vue')),
 	loginRequired: false,
 }, {
+	path: '/stations/:stationId/projects',
+	component: page(() => import('@/pages/stations/projects.vue')),
+	loginRequired: false,
+}, {
+	path: '/stations/new',
+	component: page(() => import('@/pages/stations/manager.vue')),
+	loginRequired: true,
+}, {
 	//こっから追加要素
 	path: '/stations',
 	component: page(() => import('@/pages/stations/index.vue')),
-	loginRequired: false,
-}, {
-	path: '/stations/:stationId/projects',
-	component: page(() => import('@/pages/stations/projects.vue')),
 	loginRequired: false,
 }, {
 	path: '/tette',

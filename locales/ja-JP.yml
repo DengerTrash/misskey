@@ -3553,3 +3553,7 @@ _qr:
   scanFile: "端末の画像をスキャン"
   raw: "テキスト"
   mfm: "MFM"
+
+stations: "ステーション"
+_stations:
+  requestStationEstablish: "作成の申請"

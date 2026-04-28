@@ -38,7 +38,9 @@
 		"check:connect": "cd packages/backend && pnpm check:connect",
 		"migrateandstart": "pnpm migrate && pnpm start",
 		"watch": "pnpm dev",
-		"dev": "node scripts/dev.mjs",
+
+		"build-end": "node packages/backend/src/server/apiv2/buildEndpoints.ts",
+		"dev": "pnpm build-end && node scripts/dev.mjs",
 		"lint": "pnpm --no-bail -r lint",
 		"cy:open": "pnpm cypress open --config-file=cypress.config.ts",
 		"cy:run": "pnpm cypress run",

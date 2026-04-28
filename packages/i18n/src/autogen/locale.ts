@@ -13262,4 +13262,14 @@ export interface Locale extends ILocale {
          */
         "mfm": string;
     };
+    /**
+     * ステーション
+     */
+    "stations": string;
+    "_stations": {
+        /**
+         * 作成の申請
+         */
+        "requestStationEstablish": string;
+    };
 }
