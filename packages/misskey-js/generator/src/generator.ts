@@ -1,12 +1,12 @@
 import assert from 'assert';
 import { mkdir, readFile, writeFile } from 'fs/promises';
-import type { OpenAPIV3_1 } from 'openapi-types';
 import { toPascal } from 'ts-case-convert';
 import { parse } from '@readme/openapi-parser';
 import openapiTS, { astToString } from 'openapi-typescript';
-import type { OpenAPI3, OperationObject, PathItemObject } from 'openapi-typescript';
 import ts from 'typescript';
 import { removeNeverPropertiesFromAST } from './ast-transformer.js';
+import type { OpenAPI3, OperationObject, PathItemObject } from 'openapi-typescript';
+import type { OpenAPIV3_1 } from 'openapi-types';
 
 async function generateBaseTypes(
 	openApiDocs: OpenAPIV3_1.Document,
@@ -291,13 +291,13 @@ function filterUndefined<T>(item: T): item is Exclude<T, undefined> {
 	return item !== undefined;
 }
 
-function toImportPath(fileName: string, fromPath = '/built/autogen', toPath = ''): string {
+function toImportPath(fileName: string, fromPath = '../src/autogen', toPath = '.'): string {
 	return fileName.replace(fromPath, toPath).replace('.ts', '.js');
 }
 
 enum OperationsAliasType {
 	REQUEST = 'Request',
-	RESPONSE = 'Response'
+	RESPONSE = 'Response',
 }
 
 interface IOperationTypeAlias {
@@ -397,13 +397,13 @@ class EndpointReqMediaType {
 }
 
 async function main() {
-	const generatePath = './built/autogen';
+	const generatePath = '../src/autogen';
 	await mkdir(generatePath, { recursive: true });
 
-	const openApiJsonPath = './api.json';
+	const openApiJsonPath = '../../../packages/backend/built/api.json'; //'./api.json';
 	const openApiDocs = await parse(openApiJsonPath) as OpenAPIV3_1.Document;
 
-	const typeFileName = './built/autogen/types.ts';
+	const typeFileName = '../src/autogen/types.ts';
 	await generateBaseTypes(openApiDocs, openApiJsonPath, typeFileName);
 
 	const modelFileName = `${generatePath}/models.ts`;

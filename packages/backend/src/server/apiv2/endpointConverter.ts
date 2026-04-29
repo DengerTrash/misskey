@@ -1,5 +1,5 @@
 import { IEndpoint } from "../api/endpoints.ts";
-import { EndpointObject } from "./v2.ts";
+import type { EndpointObject } from "./EndpointObject.ts";
 
 export default function endpointConverter(name: string,data: EndpointObject): IEndpoint{
 	return {

@@ -6,6 +6,18 @@ declare module '../api.js' {
     /**
      * No description provided.
      * 
+     * **Credential required**: *No*
+     */
+    request<E extends 'stations/create', P extends Endpoints[E]['req']>(
+      endpoint: E,
+      params: P,
+      credential?: string | null,
+    ): Promise<SwitchCaseResponseType<E, P>>;
+
+
+    /**
+     * No description provided.
+     * 
      * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
      * **Credential required**: *Yes* / **Permission**: *write:admin:abuse-report:notification-recipient*
      */
@@ -14,6 +26,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -27,6 +40,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -38,6 +52,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -51,6 +66,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -63,6 +79,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -73,6 +90,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -85,6 +103,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -95,6 +114,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -107,6 +127,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -117,6 +138,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -129,6 +151,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -139,6 +162,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -151,6 +175,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -161,6 +186,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -173,6 +199,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -183,6 +210,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -195,6 +223,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -205,6 +234,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -217,6 +247,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -227,6 +258,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -239,6 +271,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -249,6 +282,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -261,6 +295,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -271,6 +306,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -283,6 +319,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -293,6 +330,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -305,6 +343,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -315,6 +354,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -327,6 +367,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -337,6 +378,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -349,6 +391,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -359,6 +402,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -371,6 +415,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -381,6 +426,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -394,6 +440,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -404,6 +451,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -416,6 +464,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -426,6 +475,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -438,6 +488,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -448,6 +499,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -460,6 +512,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -470,6 +523,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -482,6 +536,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -492,6 +547,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -504,6 +560,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -514,6 +571,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -526,6 +584,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -536,6 +595,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -548,6 +608,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -558,6 +619,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -570,6 +632,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -580,6 +643,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -592,6 +656,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -602,6 +667,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -614,6 +680,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -624,6 +691,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -636,6 +704,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -646,6 +715,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -658,6 +728,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -668,6 +739,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -680,6 +752,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -690,6 +763,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -702,6 +776,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -712,6 +787,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -724,6 +800,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -734,6 +811,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -746,6 +824,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -756,6 +835,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -768,6 +848,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -778,6 +859,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -790,6 +872,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -800,6 +883,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -812,6 +896,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -822,6 +907,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -834,6 +920,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -844,6 +931,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -856,6 +944,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -866,6 +955,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -878,6 +968,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -888,6 +979,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -900,6 +992,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -910,6 +1003,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -922,6 +1016,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -932,6 +1027,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -944,6 +1040,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -954,6 +1051,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -967,6 +1065,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -978,6 +1077,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -991,6 +1091,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1002,6 +1103,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1015,6 +1117,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1027,6 +1130,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1037,6 +1141,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1049,6 +1154,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1059,6 +1165,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1071,6 +1178,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1081,6 +1189,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1093,6 +1202,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1103,6 +1213,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1115,6 +1226,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1125,6 +1237,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1137,6 +1250,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1147,6 +1261,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1159,6 +1274,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1169,6 +1285,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1181,6 +1298,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1191,6 +1309,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1203,6 +1322,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1213,6 +1333,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1225,6 +1346,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1235,6 +1357,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1248,6 +1371,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1258,6 +1382,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1270,6 +1395,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1280,6 +1406,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1292,6 +1419,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1302,6 +1430,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1314,6 +1443,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1324,6 +1454,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1336,6 +1467,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1346,6 +1478,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1358,6 +1491,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1368,6 +1502,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1380,6 +1515,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1390,6 +1526,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1402,6 +1539,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1412,6 +1550,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1424,6 +1563,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1434,6 +1574,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1446,6 +1587,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1456,6 +1598,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1468,6 +1611,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1478,6 +1622,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1490,6 +1635,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1500,6 +1646,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1512,6 +1659,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1522,6 +1670,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1534,6 +1683,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1544,6 +1694,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1556,6 +1707,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1566,6 +1718,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1578,6 +1731,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1588,6 +1742,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1600,6 +1755,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1610,6 +1766,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1622,6 +1779,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1632,6 +1790,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1644,6 +1803,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1654,6 +1814,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1666,6 +1827,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1676,6 +1838,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1688,6 +1851,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1698,6 +1862,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1710,6 +1875,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1720,6 +1886,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1732,6 +1899,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1742,6 +1910,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1754,6 +1923,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1764,6 +1934,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1776,6 +1947,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1786,6 +1958,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1798,6 +1971,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1808,6 +1982,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1820,6 +1995,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1830,6 +2006,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1842,6 +2019,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1852,6 +2030,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1864,6 +2043,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1874,6 +2054,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1886,6 +2067,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1896,6 +2078,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1908,6 +2091,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1918,6 +2102,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1930,6 +2115,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1940,6 +2126,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1952,6 +2139,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1962,6 +2150,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1974,6 +2163,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -1984,6 +2174,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -1996,6 +2187,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2006,6 +2198,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2018,6 +2211,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2028,6 +2222,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2040,6 +2235,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2050,6 +2246,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2062,6 +2259,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2072,6 +2270,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Find the notes to which the given file is attached.
@@ -2084,6 +2283,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Check if a given file exists.
      * 
@@ -2094,6 +2294,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Upload a new drive file.
@@ -2106,6 +2307,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Delete an existing drive file.
      * 
@@ -2116,6 +2318,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Search for a drive file by the given parameters.
@@ -2128,6 +2331,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Search for a drive file by a hash of the contents.
      * 
@@ -2138,6 +2342,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2150,6 +2355,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Show the properties of a drive file.
      * 
@@ -2160,6 +2366,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Update the properties of a drive file.
@@ -2172,6 +2379,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Request the server to download a new drive file from the specified URL.
      * 
@@ -2182,6 +2390,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2194,6 +2403,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2204,6 +2414,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2216,6 +2427,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2226,6 +2438,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2238,6 +2451,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2248,6 +2462,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2260,6 +2475,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2270,6 +2486,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2282,6 +2499,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2292,6 +2510,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2304,6 +2523,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2314,6 +2534,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2327,6 +2548,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2337,6 +2559,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2349,6 +2572,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2359,6 +2583,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2371,6 +2596,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2381,6 +2607,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2393,6 +2620,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2403,6 +2631,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2416,6 +2645,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2426,6 +2656,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2438,6 +2669,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2448,6 +2680,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2460,6 +2693,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2470,6 +2704,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2482,6 +2717,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2492,6 +2728,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2504,6 +2741,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2514,6 +2752,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2526,6 +2765,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2536,6 +2776,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2548,6 +2789,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2558,6 +2800,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2570,6 +2813,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2580,6 +2824,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2592,6 +2837,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2602,6 +2848,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2614,6 +2861,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2624,6 +2872,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2636,6 +2885,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2646,6 +2896,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2658,6 +2909,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2668,6 +2920,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2680,6 +2933,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2690,6 +2944,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2702,6 +2957,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2712,6 +2968,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2724,6 +2981,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2734,6 +2992,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2746,6 +3005,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2756,6 +3016,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2768,6 +3029,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2778,6 +3040,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2790,6 +3053,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2800,6 +3064,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2812,6 +3077,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2823,6 +3089,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2833,6 +3100,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2846,6 +3114,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2857,6 +3126,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2870,6 +3140,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2881,6 +3152,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2894,6 +3166,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2905,6 +3178,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2918,6 +3192,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2929,6 +3204,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2942,6 +3218,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2953,6 +3230,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2966,6 +3244,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -2976,6 +3255,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -2989,6 +3269,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3000,6 +3281,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3013,6 +3295,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3024,6 +3307,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3037,6 +3321,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3048,6 +3333,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3061,6 +3347,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3072,6 +3359,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3085,6 +3373,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3095,6 +3384,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3107,6 +3397,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3117,6 +3408,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3130,6 +3422,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3141,6 +3434,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3154,6 +3448,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3165,6 +3460,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3178,6 +3474,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3190,6 +3487,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3200,6 +3498,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3212,6 +3511,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3222,6 +3522,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3234,6 +3535,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3245,6 +3547,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3255,6 +3558,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3268,6 +3572,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3278,6 +3583,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3290,6 +3596,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3300,6 +3607,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3312,6 +3620,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3323,6 +3632,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3333,6 +3643,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3346,6 +3657,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3356,6 +3668,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3369,6 +3682,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3381,6 +3695,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3392,6 +3707,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3402,6 +3718,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3415,6 +3732,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3425,6 +3743,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3437,6 +3756,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3448,6 +3768,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3458,6 +3779,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3471,6 +3793,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3481,6 +3804,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3493,6 +3817,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3503,6 +3828,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3515,6 +3841,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3526,6 +3853,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3536,6 +3864,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3549,6 +3878,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3559,6 +3889,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3571,6 +3902,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3581,6 +3913,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3593,6 +3926,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3603,6 +3937,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3615,6 +3950,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3625,6 +3961,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3637,6 +3974,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3647,6 +3985,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3659,6 +3998,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3669,6 +4009,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3681,6 +4022,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3691,6 +4033,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3703,6 +4046,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3713,6 +4057,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3725,6 +4070,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3735,6 +4081,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3747,6 +4094,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3757,6 +4105,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3769,6 +4118,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3779,6 +4129,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3791,6 +4142,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3801,6 +4153,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3813,6 +4166,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3823,6 +4177,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3835,6 +4190,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3845,6 +4201,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3857,6 +4214,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3867,6 +4225,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3879,6 +4238,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3889,6 +4249,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3901,6 +4262,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3911,6 +4273,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3923,6 +4286,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3933,6 +4297,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3945,6 +4310,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3955,6 +4321,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3967,6 +4334,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3977,6 +4345,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -3989,6 +4358,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -3999,6 +4369,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4011,6 +4382,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4022,6 +4394,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4032,6 +4405,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4045,6 +4419,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4055,6 +4430,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4067,6 +4443,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4077,6 +4454,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4089,6 +4467,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4099,6 +4478,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4111,6 +4491,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4121,6 +4502,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4133,6 +4515,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4143,6 +4526,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4155,6 +4539,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4165,6 +4550,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4177,6 +4563,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4187,6 +4574,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Request a users password to be reset.
@@ -4199,6 +4587,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Only available when running with <code>NODE_ENV=testing</code>. Reset the database and flush Redis.
      * 
@@ -4209,6 +4598,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Complete the password reset that was previously requested.
@@ -4221,6 +4611,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4231,6 +4622,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4243,6 +4635,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4253,6 +4646,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4265,6 +4659,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4275,6 +4670,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4287,6 +4683,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4297,6 +4694,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4309,6 +4707,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4319,6 +4718,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4331,6 +4731,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4341,6 +4742,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4353,6 +4755,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4364,6 +4767,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4374,6 +4778,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Register to receive push notifications.
@@ -4387,6 +4792,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Check push notification registration exists.
      * 
@@ -4399,6 +4805,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Unregister from receiving push notifications.
      * 
@@ -4409,6 +4816,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Update push notification registration.
@@ -4422,6 +4830,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Endpoint for testing input validation.
      * 
@@ -4432,6 +4841,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4444,6 +4854,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4454,6 +4865,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4466,6 +4878,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Show all clips this user owns.
      * 
@@ -4476,6 +4889,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4488,6 +4902,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Show all flashs this user created.
      * 
@@ -4498,6 +4913,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Show everyone that follows this user.
@@ -4510,6 +4926,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Show everyone that this user is following.
      * 
@@ -4520,6 +4937,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Show all gallery posts by the given user.
@@ -4532,6 +4950,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Retrieve users who have a birthday on the specified range.
      * 
@@ -4542,6 +4961,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Get a list of other users that the specified user frequently replies to.
@@ -4554,6 +4974,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Create a new list of users.
      * 
@@ -4564,6 +4985,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4576,6 +4998,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Delete an existing list of users.
      * 
@@ -4586,6 +5009,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4598,6 +5022,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4608,6 +5033,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Show all lists that the authenticated user has created.
@@ -4620,6 +5046,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Remove a user from a list.
      * 
@@ -4630,6 +5057,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Add a user to an existing list.
@@ -4642,6 +5070,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Show the properties of a list.
      * 
@@ -4652,6 +5081,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4664,6 +5094,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Update the properties of a list.
      * 
@@ -4674,6 +5105,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4686,6 +5118,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4696,6 +5129,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Show all pages this user created.
@@ -4708,6 +5142,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Show all reactions this user made.
      * 
@@ -4718,6 +5153,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Show users that the authenticated user might be interested to follow.
@@ -4730,6 +5166,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Show the different kinds of relations between the authenticated user and the specified user(s).
      * 
@@ -4740,6 +5177,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * File a report.
@@ -4752,6 +5190,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Search for users.
      * 
@@ -4762,6 +5201,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * Search for a user by username and/or host.
@@ -4774,6 +5214,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * Show the properties of a user.
      * 
@@ -4784,6 +5225,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.
@@ -4796,6 +5238,7 @@ declare module '../api.js' {
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
 
+
     /**
      * No description provided.
      * 
@@ -4806,6 +5249,7 @@ declare module '../api.js' {
       params: P,
       credential?: string | null,
     ): Promise<SwitchCaseResponseType<E, P>>;
+
 
     /**
      * No description provided.

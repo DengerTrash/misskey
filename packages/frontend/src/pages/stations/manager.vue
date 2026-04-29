@@ -147,7 +147,7 @@ function save() {
 	if (props.channelId != null) {
 		os.apiWithDialog('stations/update', {
 			...params,
-			channelId: props.channelId,
+			stationID: props.stationId,
 			pinnedNoteIds: pinnedNoteIds.value,
 		});
 	} else {

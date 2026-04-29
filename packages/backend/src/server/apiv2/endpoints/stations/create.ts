@@ -2,6 +2,11 @@ import { Endpoint } from "../../v2.ts";
 
 export default Endpoint({
 	path: 'api/stations/create',
+	res: {
+		type: 'object',
+		optional: false, nullable: false,
+		ref: 'Stations',
+	},
 	errors: {
 		noSuchFile: {
 			message: 'No such file',
