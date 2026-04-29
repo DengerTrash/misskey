@@ -1,3 +1,9 @@
 [submodule "fluent-emojis"]
 	path = fluent-emojis
 	url = https://github.com/misskey-dev/emojis.git
+[submodule "packages/scratch-vm"]
+	path = packages/scratch-vm
+	url = https://github.com/DengerTrash/scratch-vm.git
+[submodule "packages/scratch-gui"]
+	path = packages/scratch-gui
+	url = https://github.com/DengerTrash/scratch-gui.git
