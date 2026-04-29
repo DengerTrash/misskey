@@ -15,18 +15,6 @@ SPDX-License-Identifier: AGPL-3.0-only
 				<template #label>{{ i18n.ts.description }}</template>
 			</MkTextarea>
 
-			<MkColorInput v-model="color">
-				<template #label>{{ i18n.ts.color }}</template>
-			</MkColorInput>
-
-			<MkSwitch v-model="isSensitive">
-				<template #label>{{ i18n.ts.sensitive }}</template>
-			</MkSwitch>
-
-			<MkSwitch v-model="allowRenoteToExternal">
-				<template #label>{{ i18n.ts._channel.allowRenoteToExternal }}</template>
-			</MkSwitch>
-
 			<div>
 				<MkButton v-if="bannerId == null" @click="setBannerImage"><i class="ti ti-plus"></i> {{ i18n.ts._channel.setBanner }}</MkButton>
 				<div v-else-if="bannerUrl">
@@ -157,14 +145,14 @@ function save() {
 	} satisfies Misskey.entities.ChannelsCreateRequest;
 
 	if (props.channelId != null) {
-		os.apiWithDialog('channels/update', {
+		os.apiWithDialog('stations/update', {
 			...params,
 			channelId: props.channelId,
 			pinnedNoteIds: pinnedNoteIds.value,
 		});
 	} else {
-		os.apiWithDialog('channels/create', params).then(created => {
-			router.push('/channels/:channelId', {
+		os.apiWithDialog('stations/create', params).then(created => {
+			router.push('/stations/:channelId', {
 				params: {
 					channelId: created.id,
 				},

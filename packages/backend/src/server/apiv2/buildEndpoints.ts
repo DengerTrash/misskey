@@ -29,8 +29,15 @@ let exportMoji:string = '';
 		const tess = fs.statSync(endpoint);
 
 		if(!tess.isDirectory()){
-			const endpointName = endpoint.replaceAll('/','_').replace('.ts','')
-			exportMoji = exportMoji +`export {default as ${endpointName}} from '${endpoint}'\n`
+			const endpointImport = await import(endpoint)
+			const {default: def} = endpointImport;
+			if(def?.path){
+				const endpointName = def?.path.replace('api/','')
+				const endpointPath = path.relative(fileURLToPath(import.meta.url),endpoint).replace('../','./')
+				console.log(endpointPath)
+				const nextExport = `export { default as \"${endpointName}\" } from '${endpointPath}'\n`
+				exportMoji = exportMoji + nextExport
+			}
 			/**
 
 			const aaaa = import(endpoint).then(aaa => {

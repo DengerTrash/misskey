@@ -5,8 +5,11 @@
 
 import type { Config } from '@/config.js';
 import endpoints, { IEndpoint } from '../endpoints.js';
+import endpointConverter from "../../apiv2/endpointConverter.js";
+import * as apiv2 from '../../apiv2/mod.js';
 import { errors as basicErrors } from './errors.js';
 import { getSchemas, convertSchemaToOpenApiSchema } from './schemas.js';
+import { Endpoint } from "../../apiv2/v2.ts";
 
 export function genOpenapiSpec(config: Config, includeSelfRef = false) {
 	const spec = {
@@ -40,12 +43,19 @@ export function genOpenapiSpec(config: Config, includeSelfRef = false) {
 		},
 	};
 
+	const gen2Endpoints = JSON.parse(
+		JSON.stringify(Object.entries(apiv2).map(
+			api => endpointConverter(api[0],api[1])
+		))
+	) as IEndpoint[];
+	console.log(gen2Endpoints)
 	// 書き換えたりするのでディープコピーしておく。そのまま編集するとメモリ上の値が汚れて次回以降の出力に影響する
 	const copiedEndpoints = JSON.parse(JSON.stringify(endpoints)) as IEndpoint[];
-	for (const endpoint of copiedEndpoints) {
+	const allEndpoints = [...gen2Endpoints,...copiedEndpoints]
+	for (const endpoint of allEndpoints) {
 		const errors = {} as any;
 
-		if (endpoint.meta.errors) {
+		if (endpoint.meta?.errors) {
 			for (const e of Object.values(endpoint.meta.errors)) {
 				errors[e.code] = {
 					value: {
@@ -98,7 +108,7 @@ export function genOpenapiSpec(config: Config, includeSelfRef = false) {
 			description: desc,
 			externalDocs: {
 				description: 'Source code',
-				url: `https://github.com/misskey-dev/misskey/blob/develop/packages/backend/src/server/api/endpoints/${endpoint.name}.ts`,
+				url: `https://github.com/dengertrash/misskey/blob/develop/packages/backend/src/server/api/endpoints/${endpoint.name}.ts`,
 			},
 			...(endpoint.meta.tags ? {
 				tags: [endpoint.meta.tags[0]],
