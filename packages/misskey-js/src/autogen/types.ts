@@ -5697,6 +5697,15 @@ export type components = {
 export type $defs = Record<string, never>;
 export interface operations {
     stations___create: {
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    description?: string | null;
+                    coordinators?: string[] | null;
+                };
+            };
+        };
         responses: {
             /** @description OK (without any results) */
             204: {

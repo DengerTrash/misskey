@@ -258,4 +258,4 @@ export type ChatApprovalsRepository = Repository<MiChatApproval> & MiRepository<
 export type BubbleGameRecordsRepository = Repository<MiBubbleGameRecord> & MiRepository<MiBubbleGameRecord>;
 export type ReversiGamesRepository = Repository<MiReversiGame> & MiRepository<MiReversiGame>;
 
-export type StationRepository = Repository<Station> & MiRepository<Station>;
+export type StationsRepository = Repository<Station> & MiRepository<Station>;

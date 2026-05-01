@@ -9,6 +9,6 @@ export default function endpointConverter(name: string,data: EndpointObject): IE
 			limit: data?.limit,
 			errors: data?.errors
 		},
-		params: data?.res
+		params: data?.params
 	}
 }

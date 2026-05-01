@@ -138,23 +138,19 @@ function save() {
 	const params = {
 		name: name.value,
 		description: description.value,
-		bannerId: bannerId.value,
-		color: color.value,
-		isSensitive: isSensitive.value,
-		allowRenoteToExternal: allowRenoteToExternal.value,
-	} satisfies Misskey.entities.ChannelsCreateRequest;
+	} satisfies Misskey.entities.StationsCreateRequest;
 
-	if (props.channelId != null) {
+	if (props.stationId != null) {
 		os.apiWithDialog('stations/update', {
 			...params,
-			stationID: props.stationId,
+			stationId: props.stationId,
 			pinnedNoteIds: pinnedNoteIds.value,
 		});
 	} else {
 		os.apiWithDialog('stations/create', params).then(created => {
-			router.push('/stations/:channelId', {
+			router.push('/stations/:stationId', {
 				params: {
-					channelId: created.id,
+					stationId: created?.id,
 				},
 			});
 		});

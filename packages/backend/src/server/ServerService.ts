@@ -84,7 +84,9 @@ export class ServerService implements OnApplicationShutdown {
 		});
 		this.#fastify = fastify;
 
-		const hono = initHonoland();
+		const hono = initHonoland({
+			serverService: this
+		});
 		this.#hono = hono;
 
 		// HSTS

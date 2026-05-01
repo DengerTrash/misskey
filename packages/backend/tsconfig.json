@@ -36,6 +36,8 @@
 		"types": [
 			"node"
 		],
+		"baseUrl": ".",
+
 		"typeRoots": [
 			"./src/@types",
 			"./node_modules/@types",

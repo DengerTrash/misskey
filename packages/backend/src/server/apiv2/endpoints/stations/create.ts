@@ -1,3 +1,4 @@
+//import { Station } from "../../../../models/_.js";
 import { Endpoint } from "../../v2.ts";
 
 export default Endpoint({
@@ -14,8 +15,29 @@ export default Endpoint({
 			id: '7a846e25-c0ba-4bf6-a553-2c76c5ebc36e',
 		}
 	},
-	execute(req){
-		console.log(req?.req.raw)
-		return req?.req.raw
+	params: {
+		type: 'object',
+		properties: {
+			name: { type: 'string', minLength: 1, maxLength: 128 },
+			description: { type: 'string', nullable: true, maxLength: 2048 },
+			coordinators: {
+				type: 'array',
+				items: { type: 'string', format: 'misskey:id' },
+				nullable: true,
+			},
+		},
+		required: ['name'],
+	},
+	async execute(req){
+		const me = req?.req.param;
+		/**
+
+		const channel = await this.core?.stationsRepository?.insertOne({
+			id: this.core?.idService?.gen(),
+			userId: me?.id,
+			name: me?.name,
+		} as Station);
+		return await this.core?.stationsRepository?.pack(channel, me);
+		*/
 	}
 })

@@ -1,7 +1,12 @@
-import type { Context } from "hono";
+import { Context, Hono } from "hono";
 import type { BlankInput } from "hono/types";
 
 import type { KeyOf, Schema } from '@/misc/json-schema.js';
+import { Inject } from "@nestjs/common";
+import { DI } from "../../di-symbols.ts";
+import { StationsRepository } from '@/models/_.js'
+import { IdService } from '@/core/IdService.js'
+
 
 export interface EndpointObject {
 	path: string;
@@ -55,6 +60,15 @@ export interface EndpointObject {
 	};
 	readonly res?: Schema;
 
+	readonly params?: Schema;
+
+	core?: Honoland;
+
 	get?(req?: Context<{}, "/", BlankInput>): unknown;
+
+}
+
+
+export class Honoland extends Hono {
 
 }
