@@ -114,6 +114,11 @@ type Source = {
 			enableQueryParamLogging?: boolean,
 		}
 	}
+
+	supabase?: {
+		url: string;
+		key: string;
+	}
 };
 
 export type Config = {
@@ -210,6 +215,11 @@ export type Config = {
 	perUserNotificationsMaxCount: number;
 	deactivateAntennaThreshold: number;
 	pidFile: string;
+
+	supabase?: {
+		url: string;
+		key: string;
+	}
 };
 
 export type FulltextSearchProvider = 'sqlLike' | 'sqlPgroonga' | 'meilisearch';
@@ -337,6 +347,10 @@ export function loadConfig(): Config {
 		deactivateAntennaThreshold: config.deactivateAntennaThreshold ?? (1000 * 60 * 60 * 24 * 7),
 		pidFile: config.pidFile,
 		logging: config.logging,
+		supabase: {
+			url: config.supabase?.url || '',
+			key: config.supabase?.key || '',
+		}
 	};
 }
 

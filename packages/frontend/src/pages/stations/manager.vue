@@ -6,7 +6,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 <template>
 <PageWithHeader :actions="headerActions" :tabs="headerTabs">
 	<div class="_spacer" style="--MI_SPACER-w: 700px;">
-		<div v-if="channelId == null || channel != null" class="_gaps_m">
+		<div v-if="stationId == null || channel != null" class="_gaps_m">
 			<MkInput v-model="name">
 				<template #label>{{ i18n.ts.name }}</template>
 			</MkInput>
@@ -46,8 +46,8 @@ SPDX-License-Identifier: AGPL-3.0-only
 			</MkFolder>
 
 			<div class="_buttons">
-				<MkButton primary @click="save()"><i class="ti ti-device-floppy"></i> {{ channelId ? i18n.ts.save : i18n.ts.create }}</MkButton>
-				<MkButton v-if="channelId" danger @click="archive()"><i class="ti ti-trash"></i> {{ i18n.ts.archive }}</MkButton>
+				<MkButton primary @click="save()"><i class="ti ti-device-floppy"></i> {{ stationId ? i18n.ts.save : i18n.ts.create }}</MkButton>
+				<MkButton v-if="stationId" danger @click="archive()"><i class="ti ti-trash"></i> {{ i18n.ts.archive }}</MkButton>
 			</div>
 		</div>
 	</div>
@@ -74,7 +74,7 @@ import { useRouter } from '@/router.js';
 const router = useRouter();
 
 const props = defineProps<{
-	channelId?: string;
+	stationId?: string;
 }>();
 
 const channel = ref<Misskey.entities.Channel | null>(null);
@@ -98,10 +98,10 @@ watch(() => bannerId.value, async () => {
 });
 
 async function fetchChannel() {
-	if (props.channelId == null) return;
+	if (props.stationId == null) return;
 
 	const result = await misskeyApi('channels/show', {
-		channelId: props.channelId,
+		stationId: props.stationId,
 	});
 
 	name.value = result.name;
@@ -148,11 +148,14 @@ function save() {
 		});
 	} else {
 		os.apiWithDialog('stations/create', params).then(created => {
+			/**
+
 			router.push('/stations/:stationId', {
 				params: {
 					stationId: created?.id,
 				},
 			});
+			*/
 		});
 	}
 }
@@ -193,7 +196,7 @@ const headerActions = computed(() => []);
 const headerTabs = computed(() => []);
 
 definePage(() => ({
-	title: props.channelId ? i18n.ts._channel.edit : i18n.ts._channel.create,
+	title: props.stationId ? i18n.ts._channel.edit : i18n.ts._channel.create,
 	icon: 'ti ti-device-tv',
 }));
 </script>

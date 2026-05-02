@@ -28,8 +28,11 @@ export default Endpoint({
 		},
 		required: ['name'],
 	},
-	async execute(req){
-		const me = req?.req.param;
+	async POST(ctx){
+		const bod = await ctx?.req.json()
+		await this.core?.supabase?.from('stations').insert({
+			name: bod.name
+		})
 		/**
 
 		const channel = await this.core?.stationsRepository?.insertOne({

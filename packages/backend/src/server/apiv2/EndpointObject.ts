@@ -1,7 +1,9 @@
 import { type Context, Hono } from "hono";
-import type { BlankInput } from "hono/types";
+import type { BlankEnv, BlankInput } from "hono/types";
 
 import type { KeyOf, Schema } from '@/misc/json-schema.ts';
+import { SupabaseClient } from "@supabase/supabase-js";
+import { HonoOptions } from "../../../../../$node_modules/.pnpm/hono@4.12.14/$node_modules/hono/dist/types/hono-base.js";
 //import { Inject } from "@nestjs/common";
 //import { DI } from "../../di-symbols.ts";
 
@@ -66,10 +68,13 @@ export interface EndpointObject {
 	core?: Honoland;
 
 	get?(req?: Context<{}, "/", BlankInput>): unknown;
-
+	POST?(ctx?: Context<{}, "/", BlankInput>): unknown;
 }
 
 
 export class Honoland extends Hono {
-
+	public supabase?: SupabaseClient
+	constructor(options?: HonoOptions<BlankEnv> | undefined){
+		super(options);
+	}
 }

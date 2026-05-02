@@ -31,9 +31,9 @@ import { HealthServerService } from './HealthServerService.ts';
 import { ClientServerService } from './web/ClientServerService.ts';
 import { OpenApiServerService } from './api/openapi/OpenApiServerService.ts';
 import { OAuth2ProviderService } from './oauth/OAuth2ProviderService.ts';
-import { Hono } from "hono";
 import { Buffer } from "node:buffer";
 import initHonoland from "./apiv2/v2.ts";
+import { Honoland } from "./apiv2/EndpointObject.ts";
 
 const _dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -41,7 +41,7 @@ const _dirname = fileURLToPath(new URL('.', import.meta.url));
 export class ServerService implements OnApplicationShutdown {
 	private logger: Logger;
 	#fastify: FastifyInstance;
-	#hono: Hono;
+	#hono: Honoland;
 
 	constructor(
 		@Inject(DI.config)
@@ -85,7 +85,7 @@ export class ServerService implements OnApplicationShutdown {
 		this.#fastify = fastify;
 
 		const hono = initHonoland({
-			serverService: this
+			configYml: this.config
 		});
 		this.#hono = hono;
 
@@ -152,7 +152,7 @@ export class ServerService implements OnApplicationShutdown {
 		// --- 改造箇所3: Fastifyのルート登録（fastify.registerなどが並んでいる箇所の上あたり） ---
 		if (useHono) {
 
-			const yokonagashi = async(request, reply) => {
+			const yokonagashi = async(request: Fastify.FastifyRequest, reply) => {
 				// 1. Fastifyのリクエストを、標準のWeb Requestに変換
 				const protocol = request.protocol; // http or https
 				const host = request.headers.host;
@@ -164,14 +164,17 @@ export class ServerService implements OnApplicationShutdown {
 				};
 
 				// GETとHEAD以外はボディをそのまま渡す
-				if (request.method !== 'GET' && request.method !== 'HEAD') {
+				if (request.method === 'POST') {
 					// ※現在Fastifyはデフォルトでbodyをパースしてしまうので、
 					// 確実な横流しのためには raw なバッファを渡す必要があります。
 					// ひとまずはJSON等を文字列化して渡すか、fastifyRawBodyを利用します。
 					init.body = typeof request.body === 'object' ? JSON.stringify(request.body) : request.body as any;
 				}
-
-				const standardReq = new Request(url, init);
+				//console.log('init:',init)
+				const standardReq = new Request(url, {
+					...init
+				});
+				//console.log('req:',standardReq)
 
 				// 2. Honoに処理を丸投げする
 				const standardRes = await hono.fetch(standardReq);
@@ -188,7 +191,7 @@ export class ServerService implements OnApplicationShutdown {
 			};
 
 			// Honoで処理させたいパスのプレフィックスを指定（将来的に増やしていく）
-			fastify.all('/apiv2*',async(request,reply) => await yokonagashi(request,reply))
+			//fastify.all('/apiv2*',{config: { rawBody: true } },async(request,reply) => await yokonagashi(request,reply))
 			fastify.all('/api/stations*',async(request,reply) => await yokonagashi(request,reply))
 		};
 
