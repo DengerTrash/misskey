@@ -1,4 +1,4 @@
-import { fileURLToPath } from "url";
+import { fileURLToPath } from "node:url";
 
 import * as fs from 'node:fs'
 import * as path from 'node:path'
@@ -8,6 +8,7 @@ const readSubDirSync = (folderPath: string):Array<string> => {
     let result: Array<string> = [];
     const readTopDirSync = ((folderPath: string) => {
       let items = fs.readdirSync(folderPath);
+			console.log(folderPath,items)
       items = items.map((itemName) => {
         return path.join(folderPath, itemName);
       });

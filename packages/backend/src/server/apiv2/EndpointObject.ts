@@ -1,11 +1,12 @@
-import { Context, Hono } from "hono";
+import { type Context, Hono } from "hono";
 import type { BlankInput } from "hono/types";
 
-import type { KeyOf, Schema } from '@/misc/json-schema.js';
-import { Inject } from "@nestjs/common";
-import { DI } from "../../di-symbols.ts";
-import { StationsRepository } from '@/models/_.js'
-import { IdService } from '@/core/IdService.js'
+import type { KeyOf, Schema } from '@/misc/json-schema.ts';
+//import { Inject } from "@nestjs/common";
+//import { DI } from "../../di-symbols.ts";
+
+//import { StationsRepository } from '@/models/_.ts'
+//import { IdService } from '@/core/IdService.ts'
 
 
 export interface EndpointObject {

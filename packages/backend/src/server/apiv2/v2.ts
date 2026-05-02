@@ -2,18 +2,18 @@ import { Hono } from "hono";
 
 import * as yaml from 'js-yaml';
 
-import { promises as fsp } from 'fs';
+import { promises as fsp } from 'node:fs';
 
 import * as endpoints from './mod.ts';
 import { Honoland, type EndpointObject } from "./EndpointObject.ts";
-import { ServerService } from "../ServerService.ts";
+//import { ServerService } from "../ServerService.ts";
 
 interface HonolandInitOption {
-	serverService?: ServerService
+	//serverService?: ServerService
 }
 
-const url = process.env.NODE_ENV === 'development' ? (yaml.load(await fsp.readFile('../../../../.config/default.yml', 'utf-8')) as any).url : null;
-console.log(url)
+//const url = process.env.NODE_ENV === 'development' ? (yaml.load(await fsp.readFile('../../../../.config/default.yml', 'utf-8')) as any).url : null;
+//console.log(url)
 export default function initHonoland(config: HonolandInitOption): Honoland{
 	const hr = new Honoland();
 
