@@ -2,7 +2,7 @@
 import { Endpoint } from "../../v2.ts";
 
 export default Endpoint({
-	path: 'api/stations/create',
+	path: 'api/stations/show',
 	res: {
 		type: 'object',
 		optional: false, nullable: false,
@@ -10,30 +10,21 @@ export default Endpoint({
 	},
 	errors: {
 		noSuchFile: {
-			message: 'No such file',
-			code: 'NO_SUCH_FILE',
-			id: '7a846e25-c0ba-4bf6-a553-2c76c5ebc36e',
+			message: 'No such stations',
+			code: 'NO_SUCH_STATIONS',
+			id: '0513b1fb-e5b3-4caa-b73f-4f2322150237',
 		}
 	},
 	params: {
 		type: 'object',
 		properties: {
-			name: { type: 'string', minLength: 1, maxLength: 128 },
-			description: { type: 'string', nullable: true, maxLength: 2048 },
-			coordinators: {
-				type: 'array',
-				items: { type: 'string', format: 'misskey:id' },
-				nullable: true,
-			},
+			stationId: { type: 'string', format: 'misskey:id' },
 		},
-		required: ['name'],
+		required: ['stationId'],
 	},
-	/**ログインデータの認証も追加しなきゃじゃん。。 */
 	async POST(ctx){
 		const bod = await ctx?.req.json()
-		await this.core?.supabase?.from('stations').insert({
-			name: bod.name
-		})
+		await this.core?.supabase?.from('stations').select('*').eq('id',1)
 		/**
 
 		const channel = await this.core?.stationsRepository?.insertOne({

@@ -2,6 +2,7 @@ import type {
 	EmptyRequest,
 	EmptyResponse,
 	StationsCreateRequest,
+	StationsShowRequest,
 	AdminAbuseReportNotificationRecipientCreateRequest,
 	AdminAbuseReportNotificationRecipientCreateResponse,
 	AdminAbuseReportNotificationRecipientDeleteRequest,
@@ -664,6 +665,7 @@ import type {
 
 export type Endpoints = {
 	'stations/create': { req: StationsCreateRequest; res: EmptyResponse };
+	'stations/show': { req: StationsShowRequest; res: EmptyResponse };
 	'admin/abuse-report/notification-recipient/create': { req: AdminAbuseReportNotificationRecipientCreateRequest; res: AdminAbuseReportNotificationRecipientCreateResponse };
 	'admin/abuse-report/notification-recipient/delete': { req: AdminAbuseReportNotificationRecipientDeleteRequest; res: EmptyResponse };
 	'admin/abuse-report/notification-recipient/list': { req: AdminAbuseReportNotificationRecipientListRequest; res: AdminAbuseReportNotificationRecipientListResponse };

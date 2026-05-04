@@ -27,6 +27,7 @@
         "npm:globals@17.4.0",
         "npm:ignore-walk@8.0.0",
         "npm:js-yaml@4.1.1",
+        "npm:moo@~0.5.3",
         "npm:ncp@2.0.0",
         "npm:pnpm@10.33.0",
         "npm:postcss@8.5.9",
@@ -72,6 +73,7 @@
             "npm:@simplewebauthn/types@12.0.0",
             "npm:@sinonjs/fake-timers@15.3.0",
             "npm:@smithy/node-http-handler@4.5.2",
+            "npm:@supabase/supabase-js@2.104.1",
             "npm:@swc/cli@0.8.1",
             "npm:@swc/core@1.15.24",
             "npm:@swc/jest@0.2.39",
@@ -401,6 +403,21 @@
             "npm:nodemon@3.1.14",
             "npm:vue-eslint-parser@10.4.0",
             "npm:vue@3.5.32"
+          ]
+        }
+      },
+      "packages/galong-render": {
+        "packageJson": {
+          "dependencies": [
+            "npm:babylonjs@9.5.0"
+          ]
+        }
+      },
+      "packages/galong-vm": {
+        "packageJson": {
+          "dependencies": [
+            "npm:moo@~0.5.3",
+            "npm:ohm-js@^17.5.0"
           ]
         }
       },

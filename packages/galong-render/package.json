@@ -1,0 +1,7 @@
+{
+	"name": "galong-render",
+	"version": "0.1.0",
+	"dependencies": {
+		"babylonjs": "9.5.0"
+	}
+}

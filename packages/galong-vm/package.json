@@ -1,0 +1,8 @@
+{
+	"name": "galong-vm",
+	"version": "0.1.0",
+	"dependencies": {
+		"moo": "^0.5.3",
+		"ohm-js": "^17.5.0"
+	}
+}

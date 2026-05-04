@@ -1,9 +1,8 @@
 import { type Context, Hono } from "hono";
 import type { BlankEnv, BlankInput } from "hono/types";
-
+import type { HonoOptions } from 'hono/hono-base';
 import type { KeyOf, Schema } from '@/misc/json-schema.ts';
 import { SupabaseClient } from "@supabase/supabase-js";
-import { HonoOptions } from "../../../../../$node_modules/.pnpm/hono@4.12.14/$node_modules/hono/dist/types/hono-base.js";
 //import { Inject } from "@nestjs/common";
 //import { DI } from "../../di-symbols.ts";
 

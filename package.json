@@ -18,7 +18,9 @@
 		"packages/sw",
 		"packages/backend",
 		"packages/frontend",
-		"packages/frontend-embed"
+		"packages/frontend-embed",
+		"packages/galong-vm",
+		"packages/galong-render"
 	],
 	"private": true,
 	"scripts": {
@@ -61,6 +63,7 @@
 		"execa": "9.6.1",
 		"ignore-walk": "8.0.0",
 		"js-yaml": "4.1.1",
+		"moo": "^0.5.3",
 		"postcss": "8.5.9",
 		"tar": "7.5.13",
 		"terser": "5.46.1"
