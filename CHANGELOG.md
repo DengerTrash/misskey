@@ -1,3 +1,18 @@
+## 2026.5.5 (DIFF)
+- 2026.5.1相当の内容に更新しました
+
+## 2026.5.4 (DIFF)
+- 開発中のゲームエンジンをサブモジュールに追加
+
+## 2026.5.3 (DIFF)
+- 開発環境にてSupabaseを試験実装
+- 実行にはdefault.ymlに以下の記述を追加し、かつDockerのsupabaseを起動する必要があります
+```yml
+supabase:
+  url: # localhost:54323より取得できるリンク
+	key: # localhost:54323より取得できるanonkey
+```
+
 ## 2026.5.1
 
 ### General
