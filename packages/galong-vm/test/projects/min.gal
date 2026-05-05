@@ -3,11 +3,11 @@ define Cube{
 		on_start_1,
 	]
 };
-const hoge = 42;
+//const hoge = 42;
 
 /* x:4 y:80 */
 function on_start_1(sprite){
 	forever{
-		sprite.rotatePerSecond(0,3,0)
+		sprite.rotatePerSecond(0,0,0)
 	}
 };

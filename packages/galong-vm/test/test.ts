@@ -2,7 +2,7 @@ const bund = await Deno.bundle({
 	entrypoints: [import.meta.resolve('../src/mod.ts')],
 	outputPath: 'packages/galong-vm/test/.built/build.js',
 	platform: "browser",
-  minify: true,
+  //minify: true,
 	write: true,
 	format: 'esm'
 });
@@ -11,10 +11,11 @@ console.log(bund.success)
 async function handler(req: Request): Promise<Response> {
 	const { pathname } = new URL(req.url);
 
+	// こうでもしないとうまくいかないの
 	const js = await Deno.readTextFile("packages/galong-vm/test/test.js");
 	const bu = await Deno.readTextFile("packages/galong-vm/test/.built/build.js");
 	const oh = await Deno.readTextFile("packages/galong-vm/src/galong.ohm");
-	const ga = await Deno.readTextFile("packages/galong-vm/test/min.gal");
+	const ga = await Deno.readTextFile("packages/galong-vm/test/projects/min.gal");
 	if (pathname.endsWith("test.js")) {
     return new Response(js, {
       headers: { "content-type": "text/javascript" },
