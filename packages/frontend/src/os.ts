@@ -222,10 +222,6 @@ export function popup<T extends Component>(
 	const { resolvedProps, stopSync } = normalizePopupProps(props);
 	let disposed = false;
 	const dispose = () => {
-		if (disposed) return;
-		disposed = true;
-		stopSync();
-
 		nextTick(() => {
 			popups.value = popups.value.filter(p => p.id !== id);
 		});

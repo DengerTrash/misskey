@@ -16,7 +16,6 @@ onlyBuiltDependencies:
   - '@parcel/watcher'
   - '@sentry/profiling-node'
   - '@sentry-internal/node-cpu-profiler'
-  - '@swc/core'
   - '@tensorflow/tfjs-node'
   - bufferutil
   - canvas
@@ -39,3 +38,5 @@ minimumReleaseAgeExclude:
   - '@fastify/express' # 脆弱性対応。そのうち消す
   - '@fastify/http-proxy' # 脆弱性対応。そのうち消す
   - '@fastify/reply-from' # 脆弱性対応。そのうち消す
+  - '@misskey-dev/*'
+  - '@typescript/native-preview*'
