@@ -1,3 +1,3 @@
-export * from './vm.ts'
-export * from './player.ts'
+export * from './old/vm.ts'
+export * from './old/player.ts'
 export * from '../structures/sprite.ts'

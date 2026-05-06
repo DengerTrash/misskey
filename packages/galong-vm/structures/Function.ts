@@ -18,8 +18,10 @@ export class GalongFunction {
 		this.executes = execute;
 
 	}
-	execute(sprite: GalongSprite,...args: any){
-		//this.VM.execute(this.executes)
-		sprite.rotate(0,9,0)
+	execute(sprite: GalongSprite, ...args: any){
+		console.log('called')
+		this.VM.execute(this.executes,sprite)
+		//console.log('sssss')
+		//sprite.rotatePerSecond(0,9,0)
 	}
 }

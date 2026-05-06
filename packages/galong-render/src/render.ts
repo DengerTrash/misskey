@@ -1,20 +1,22 @@
 import babylon from 'npm:babylonjs'
 import { GalongPlayer,GalongSprite } from '../../galong-vm/src/mod.ts'
+import { Sprite } from "./sprite.ts";
 export class GalongRenderer {
 	readonly parents: GalongPlayer;
-	public baby: babylon.Engine
+	public baby: babylon.WebGPUEngine
 	private canvas: HTMLCanvasElement
 	scenes: Array<babylon.Scene>;
 	constructor(parents: GalongPlayer, canvas: HTMLCanvasElement){
 		this.parents = parents;
 		this.canvas = canvas
-		this.baby = new babylon.Engine(canvas)
+		this.baby = new babylon.WebGPUEngine(canvas)
 		this.scenes = []
 	}
 	resize(){
 		this.baby.resize()
 	}
-	init(){
+	async init(){
+		await this.baby.initAsync();
 			/**
    * カメラ、ライト、メッシュの入ったシーンを作成する
    */
@@ -56,7 +58,7 @@ export class GalongRenderer {
     /**
      * 物体の初期化。今回はただの立方体
      */
-    const box = babylon.MeshBuilder.CreateBox( "box", {}, this.scenes[0] );
-		return box;
+    const unko = new Sprite(this)
+		return unko;
 	}
 }

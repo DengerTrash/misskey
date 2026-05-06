@@ -1,13 +1,14 @@
 import * as fs from "node:fs";
 import * as ohm from 'npm:ohm-js'
 import * as ohmExtra from 'npm:ohm-js/extras'
+import { GalongToken } from "../../structures/GalongTokens.ts";
 
 const ohmGramma = fetch('../../src/galong.ohm')
 ohmGramma.catch(e => console.error('ohm error:',e))//new URL('./galong.ohm',import.meta.url),'utf-8')
 const ohmGrammar = await ohmGramma.then(fe => fe.text());
 
 //パーサーを使ってコードを解析します。
-export function parser(moji: string){
+export function parser(moji: string) { //: Array<GalongToken>{
 	const uuu = ohm.grammar(ohmGrammar)
 	const uuuu = uuu.match(moji)
 	return ohmExtra.toAST(uuuu,{
@@ -23,10 +24,11 @@ export function parser(moji: string){
 			arguments: 1,
 		},
 		ConstStatement: {
+			type: "Const",
 			identifier: 1
 		},
  		DefineStatement: {
-			type: "DefineStatement",
+			type: "Define",
 			identifier: 1,
 			value: 2
 		},
@@ -34,9 +36,11 @@ export function parser(moji: string){
 			value: 0
 		},
 		ForeverStatement: {
+			type: "Forever",
 			execute: 1
 		},
 		FunctionBody: {
+			type: 'Function',
 			execute: 1
 		},
 		FunctionDeclaration: {
@@ -46,7 +50,7 @@ export function parser(moji: string){
 		},
 		MemberExpression_propRefExp: {
 			parent: 0,
-			merthod: 2
+			method: 2
 		}
 	})
 }

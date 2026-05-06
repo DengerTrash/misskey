@@ -1,13 +1,14 @@
-import { GalongPlayer } from "../src/player.ts";
+import { Sprite } from "../../galong-render/src/sprite.ts";
+import { GalongPlayer } from "../src/old/player.ts";
 import babylon from 'npm:babylonjs'
 export class GalongSprite {
 	readonly parent: GalongPlayer;
-	readonly jittai: babylon.Mesh;
 	readonly id: string;
 	public on_start: Array<string>;
 	public x: Float32Array
 	public y: Float32Array
 	public z: Float32Array
+	readonly mesh: babylon.Mesh
 	public rotation: {x: number,y: number,z: number}
 	constructor(parent: GalongPlayer,id: string){
 		this.parent = parent;
@@ -19,16 +20,10 @@ export class GalongSprite {
 
 		this.on_start = []
 
-		this.jittai = this.parent.rend.createSprites(this)
+		this.mesh = babylon.MeshBuilder.CreateBox( "box", {}, parent.rend.scenes[0] );
 	}
-	rotate(x: number, y: number, z: number) {
-    this.rotation.x += x;
-    this.rotation.y += y;
-    this.rotation.z += z;
-		this.jittai.rotate(
-			new babylon.Vector3(x,y,z),
-			2 * this.jittai.getScene().getAnimationRatio()
-		)
+	rotatePerSecond(x: number, y: number, z: number) {
+		this.mesh.rotate(new babylon.Vector3(x,y,z),1)
     // console.log(`[${this.id}] rotated to Y:${this.rotation.y}`);
   }
 }

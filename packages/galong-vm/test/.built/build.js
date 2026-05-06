@@ -166519,7 +166519,8 @@ var GalongFunction = class {
     this.executes = execute;
   }
   execute(sprite, ...args) {
-    sprite.rotate(0, 9, 0);
+    console.log("called");
+    this.VM.execute(this.executes, sprite);
   }
 };
 
@@ -166527,12 +166528,12 @@ var GalongFunction = class {
 var import_npm_babylonjs = __toESM(require_babylon());
 var GalongSprite = class {
   parent;
-  jittai;
   id;
   on_start;
   x;
   y;
   z;
+  mesh;
   rotation;
   constructor(parent, id) {
     this.parent = parent;
@@ -166546,17 +166547,14 @@ var GalongSprite = class {
       z: 0
     };
     this.on_start = [];
-    this.jittai = this.parent.rend.createSprites(this);
+    this.mesh = import_npm_babylonjs.default.MeshBuilder.CreateBox("box", {}, parent.rend.scenes[0]);
   }
-  rotate(x, y, z) {
-    this.rotation.x += x;
-    this.rotation.y += y;
-    this.rotation.z += z;
-    this.jittai.rotate(new import_npm_babylonjs.default.Vector3(x, y, z), 2 * this.jittai.getScene().getAnimationRatio());
+  rotatePerSecond(x, y, z) {
+    this.mesh.rotate(new import_npm_babylonjs.default.Vector3(x, y, z), 1);
   }
 };
 
-// packages/galong-vm/src/vm.ts
+// packages/galong-vm/src/old/vm.ts
 var GalongVM = class {
   // 次のフレームで再開すべきタスク（Promiseのresolve関数）のリスト
   nextFrameTasks = [];
@@ -166594,14 +166592,14 @@ var GalongVM = class {
   /**
    * 命令（JSON）を実行するインタプリタ
    */
-  async execute(instructions, sprite) {
+  async execute(instructions, sprites) {
     if (!this.isRunning) return;
     for (const instruction of instructions) {
       console.log(instruction);
-      await this.state(instruction);
+      await this.state(instruction, sprites);
     }
   }
-  async state(instruction) {
+  async state(instruction, sprite) {
     switch (instruction.type) {
       case "DefineStatement": {
         const spriteInstance = new GalongSprite(this.parents, crypto.randomUUID());
@@ -166618,7 +166616,22 @@ var GalongVM = class {
       case "EmptyStatement": {
         break;
       }
+      case "ExpressionStatement": {
+        if (instruction.value?.execute.parent === "sprite") {
+          switch (instruction.value?.execute.method) {
+            case "rotatePerSecond":
+              {
+                const par = instruction.value?.arguments;
+                this.sprites[0]?.rotatePerSecond(par[0], par[1], par[2]);
+              }
+              break;
+          }
+        }
+        break;
+      }
+      //Ex何ちゃらを動かす動作も追加しなければだけど。。。。秋田。
       case "ForeverStatement": {
+        console.log("forever");
         while (this.isRunning) {
           for (const subInst of instruction.execute) {
             await this.state(subInst);
@@ -166636,18 +166649,51 @@ var GalongVM = class {
     }
   }
   async bang() {
+    console.log("bang");
     for await (const sprite of this.sprites) {
       if (sprite.on_start) {
+        console.log("onstart");
         for await (const func of sprite.on_start) {
+          console.log(this.functions);
           const exec = this.functions.get(func)?.execute(sprite, this);
         }
       }
+    }
+    this.loop();
+  }
+  loop() {
+    this.tick();
+    const cube1 = this.sprites[0];
+    if (cube1.rotation.y < 5) {
+      setTimeout(this.loop.bind(this), 1e3 / 10);
+    } else {
+      console.log("\u30C6\u30B9\u30C8\u7D42\u4E86");
+      this.isRunning = false;
     }
   }
 };
 
 // packages/galong-render/src/render.ts
+var import_npm_babylonjs3 = __toESM(require_babylon());
+
+// packages/galong-render/src/sprite.ts
 var import_npm_babylonjs2 = __toESM(require_babylon());
+var Sprite = class {
+  mesh;
+  parent;
+  constructor(parent) {
+    this.parent = parent;
+    this.mesh = import_npm_babylonjs2.default.MeshBuilder.CreateBox("box", {}, parent.scenes[0]);
+  }
+  rotatePerSecond(x, y, z) {
+    console.log(x, y, z);
+    this.mesh.rotation.x = Number(this.mesh.rotation.x) + x;
+    this.mesh.rotation.y = this.mesh.rotation.y + y;
+    this.mesh.rotation.z = this.mesh.rotation.z + z;
+  }
+};
+
+// packages/galong-render/src/render.ts
 var GalongRenderer = class {
   parents;
   baby;
@@ -166656,18 +166702,19 @@ var GalongRenderer = class {
   constructor(parents, canvas) {
     this.parents = parents;
     this.canvas = canvas;
-    this.baby = new import_npm_babylonjs2.default.Engine(canvas);
+    this.baby = new import_npm_babylonjs3.default.WebGPUEngine(canvas);
     this.scenes = [];
   }
   resize() {
     this.baby.resize();
   }
-  init() {
+  async init() {
+    await this.baby.initAsync();
     const buildScene = () => {
-      const scene2 = new import_npm_babylonjs2.default.Scene(this.baby);
-      const camera = new import_npm_babylonjs2.default.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 2.5, 3, new import_npm_babylonjs2.default.Vector3(0, 0, 0), scene2);
+      const scene2 = new import_npm_babylonjs3.default.Scene(this.baby);
+      const camera = new import_npm_babylonjs3.default.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 2.5, 3, new import_npm_babylonjs3.default.Vector3(0, 0, 0), scene2);
       camera.attachControl(this.canvas, true);
-      const light = new import_npm_babylonjs2.default.HemisphericLight("light", new import_npm_babylonjs2.default.Vector3(0, 1, 0), scene2);
+      const light = new import_npm_babylonjs3.default.HemisphericLight("light", new import_npm_babylonjs3.default.Vector3(0, 1, 0), scene2);
       return scene2;
     };
     const scene = buildScene();
@@ -166677,8 +166724,8 @@ var GalongRenderer = class {
     });
   }
   createSprites(sprite) {
-    const box = import_npm_babylonjs2.default.MeshBuilder.CreateBox("box", {}, this.scenes[0]);
-    return box;
+    const unko2 = new Sprite(this);
+    return unko2;
   }
 };
 
@@ -175449,7 +175496,7 @@ semantics.addOperation("ruleName", {
   }
 });
 
-// packages/galong-vm/src/parser.ts
+// packages/galong-vm/src/old/parser.ts
 var ohmGramma = fetch("../../src/galong.ohm");
 ohmGramma.catch((e) => console.error("ohm error:", e));
 var ohmGrammar2 = await ohmGramma.then((fe) => fe.text());
@@ -175490,12 +175537,12 @@ function parser(moji) {
     },
     MemberExpression_propRefExp: {
       parent: 0,
-      merthod: 2
+      method: 2
     }
   });
 }
 
-// packages/galong-vm/src/player.ts
+// packages/galong-vm/src/old/player.ts
 var unti = fetch("../projects/min.gal");
 unti.catch((e) => console.error("unti error:", e));
 var unko = await unti.then((fe) => fe.text());

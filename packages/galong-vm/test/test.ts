@@ -7,6 +7,7 @@ const bund = await Deno.bundle({
 	format: 'esm'
 });
 console.log(bund.success)
+console.log(bund.errors)
 
 async function handler(req: Request): Promise<Response> {
 	const { pathname } = new URL(req.url);

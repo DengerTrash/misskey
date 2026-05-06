@@ -12,6 +12,7 @@ interface AssignmentExpression {
 	key: string;
 	value?: any;
 	type:string;
+	execute?: any;
 }
 
 interface FunctionDeclaration {

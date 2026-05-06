@@ -1,5 +1,5 @@
-import { GalongRenderer } from "../../galong-render/src/mod.ts"
-import { GalongVM } from "./mod.ts"
+import { GalongRenderer } from "../../../galong-render/src/mod.ts"
+import { GalongVM } from "../mod.ts"
 import { parser } from "./parser.ts";
 
 

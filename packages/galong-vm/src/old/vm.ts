@@ -1,7 +1,7 @@
-import { GalongFunction } from "../structures/Function.ts";
-import { parsedToken } from "../structures/parsedToken.ts";
-import { GalongSprite } from "../structures/sprite.ts";
-import { GalongPlayer } from "./mod.ts";
+import { GalongFunction } from "../../structures/Function.ts";
+import { parsedToken } from "../../structures/parsedToken.ts";
+import { GalongSprite } from "../../structures/sprite.ts";
+import { GalongPlayer } from "../mod.ts";
 import { parser } from "./parser.ts";
 import * as fs from "node:fs";
 
@@ -49,11 +49,12 @@ export class GalongVM {
   /**
    * 命令（JSON）を実行するインタプリタ
    */
-  async execute(instructions: Array<parsedToken>, sprite?: GalongSprite): Promise<void> {
+  async execute(instructions: Array<parsedToken>,sprites?: GalongSprite): Promise<void> {
     if (!this.isRunning) return;
+		//console.log(sprites)
 		for(const instruction of instructions){
 			console.log(instruction)
-			await this.state(instruction)
+			await this.state(instruction,sprites)
 				/**
 
 				case 'ROTATE':
@@ -85,7 +86,8 @@ export class GalongVM {
 
 			}
 		}
-	async state(instruction: parsedToken){
+	async state(instruction: parsedToken, sprite?: GalongSprite){
+		//console.log(sprite)
 		switch (instruction.type) {
 			case "DefineStatement": {
 				const spriteInstance = new GalongSprite(this.parents,crypto.randomUUID())
@@ -102,8 +104,25 @@ export class GalongVM {
 			case "EmptyStatement": {
 				break;
 			}
+			case "ExpressionStatement": {
+				if(instruction.value?.execute.parent === 'sprite'){
+					switch (instruction.value?.execute.method){
+						case 'rotatePerSecond': {
+							const par = instruction.value?.arguments
+							this.sprites[0]?.rotatePerSecond(
+								par[0],
+								par[1],
+								par[2]
+							)
+						}
+						break;
+					}
+				}
+				break;
+			}
 			//Ex何ちゃらを動かす動作も追加しなければだけど。。。。秋田。
 			case "ForeverStatement": {
+				console.log('forever')
 				while (this.isRunning) {
           for (const subInst of instruction.execute) {
             await this.state(subInst);
@@ -121,12 +140,31 @@ export class GalongVM {
 		}
 	}
 	async bang(){
+		console.log('bang')
 		for await(const sprite of this.sprites){
 			if(sprite.on_start){
+				console.log('onstart')
 				for await(const func of sprite.on_start){
+					console.log(this.functions)
 					const exec = this.functions.get(func)?.execute(sprite,this)
 				}
 			}
 		}
+		this.loop()
+	}
+	loop(){
+		this.tick(); // ここで全員の yield のロックが外れ、1歩進む
+
+		const cube1 = this.sprites[0]
+  	// 状態の確認（テスト出力）
+ 		//console.log(`Frame update -> Cube1: ${cube1.mesh.rotation.x},${cube1.mesh.rotation.y},${cube1.mesh.rotation.z}`);
+
+  	// 疑似的な60fpsループ (実際は requestAnimationFrame を使う)
+  	if (cube1.rotation.y < 5) {
+  	  setTimeout(this.loop.bind(this), 1000 / 10);
+	  } else {
+  	  console.log("テスト終了");
+  	  this.isRunning = false;
+ 	 }
 	}
 }
