@@ -8,6 +8,6 @@ define Cube{
 /* x:4 y:80 */
 function on_start_1(sprite){
 	forever{
-		sprite.rotatePerSecond(5,0,0)
+		sprite.rotatePerSecond(45,0,0)
 	}
 };

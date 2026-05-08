@@ -40,10 +40,10 @@ export function parser(moji: string) { //: Array<GalongToken>{
 			execute: 1
 		},
 		FunctionBody: {
-			type: 'Function',
 			execute: 1
 		},
 		FunctionDeclaration: {
+			type: 'Function',
 			identifier: 1,
 			argument: 3,
 			execute: 6

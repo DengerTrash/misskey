@@ -16,7 +16,7 @@ async function handler(req: Request): Promise<Response> {
 	const js = await Deno.readTextFile("packages/galong-vm/test/test.js");
 	const bu = await Deno.readTextFile("packages/galong-vm/test/.built/build.js");
 	const oh = await Deno.readTextFile("packages/galong-vm/src/galong.ohm");
-	const ga = await Deno.readTextFile("packages/galong-vm/test/projects/min.gal");
+	const ga = await Deno.readTextFile("packages/galong-vm/test/projects2/min.gal");
 	if (pathname.endsWith("test.js")) {
     return new Response(js, {
       headers: { "content-type": "text/javascript" },

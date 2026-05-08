@@ -166550,11 +166550,15 @@ var GalongSprite = class {
     this.mesh = import_npm_babylonjs.default.MeshBuilder.CreateBox("box", {}, parent.rend.scenes[0]);
   }
   rotatePerSecond(x, y, z) {
-    this.mesh.rotate(new import_npm_babylonjs.default.Vector3(x, y, z), 1);
+    const deltaTime = this.parent.rend.baby.getDeltaTime() / 1e3;
+    const rotationQuaternion = import_npm_babylonjs.default.Quaternion.RotationYawPitchRoll(import_npm_babylonjs.default.Tools.ToRadians(x) * deltaTime, import_npm_babylonjs.default.Tools.ToRadians(y) * deltaTime, import_npm_babylonjs.default.Tools.ToRadians(z) * deltaTime);
+    if (!this.mesh.rotationQuaternion) this.mesh.rotationQuaternion = import_npm_babylonjs.default.Quaternion.FromEulerVector(this.mesh.rotation);
+    this.mesh.rotationQuaternion?.multiplyInPlace(rotationQuaternion);
+    console.log(`[${this.id}] rotated to Y:${this.rotation.y}`);
   }
 };
 
-// packages/galong-vm/src/old/vm.ts
+// packages/galong-vm/src/gen2/vm.ts
 var GalongVM = class {
   // 次のフレームで再開すべきタスク（Promiseのresolve関数）のリスト
   nextFrameTasks = [];
@@ -166601,7 +166605,7 @@ var GalongVM = class {
   }
   async state(instruction, sprite) {
     switch (instruction.type) {
-      case "DefineStatement": {
+      case "Define": {
         const spriteInstance = new GalongSprite(this.parents, crypto.randomUUID());
         for (const va of instruction.value) {
           const { value } = va;
@@ -166630,7 +166634,7 @@ var GalongVM = class {
         break;
       }
       //Ex何ちゃらを動かす動作も追加しなければだけど。。。。秋田。
-      case "ForeverStatement": {
+      case "Forever": {
         console.log("forever");
         while (this.isRunning) {
           for (const subInst of instruction.execute) {
@@ -166640,7 +166644,7 @@ var GalongVM = class {
         }
         break;
       }
-      case "FunctionDeclaration": {
+      case "Function": {
         console.log(instruction.execute);
         const FunctionInstance = new GalongFunction(this, instruction.identifier, instruction.argument ?? [], instruction.execute.execute);
         this.functions.set(instruction.identifier ?? "unknown_function", FunctionInstance);
@@ -166665,7 +166669,7 @@ var GalongVM = class {
     this.tick();
     const cube1 = this.sprites[0];
     if (cube1.rotation.y < 5) {
-      setTimeout(this.loop.bind(this), 1e3 / 10);
+      setTimeout(this.loop.bind(this), 1e3 / 60);
     } else {
       console.log("\u30C6\u30B9\u30C8\u7D42\u4E86");
       this.isRunning = false;
@@ -175496,7 +175500,7 @@ semantics.addOperation("ruleName", {
   }
 });
 
-// packages/galong-vm/src/old/parser.ts
+// packages/galong-vm/src/gen2/parser.ts
 var ohmGramma = fetch("../../src/galong.ohm");
 ohmGramma.catch((e) => console.error("ohm error:", e));
 var ohmGrammar2 = await ohmGramma.then((fe) => fe.text());
@@ -175514,10 +175518,11 @@ function parser(moji) {
       arguments: 1
     },
     ConstStatement: {
+      type: "Const",
       identifier: 1
     },
     DefineStatement: {
-      type: "DefineStatement",
+      type: "Define",
       identifier: 1,
       value: 2
     },
@@ -175525,12 +175530,14 @@ function parser(moji) {
       value: 0
     },
     ForeverStatement: {
+      type: "Forever",
       execute: 1
     },
     FunctionBody: {
       execute: 1
     },
     FunctionDeclaration: {
+      type: "Function",
       identifier: 1,
       argument: 3,
       execute: 6
@@ -175542,8 +175549,8 @@ function parser(moji) {
   });
 }
 
-// packages/galong-vm/src/old/player.ts
-var unti = fetch("../projects/min.gal");
+// packages/galong-vm/src/gen2/player.ts
+var unti = fetch("../projects2/min.gal");
 unti.catch((e) => console.error("unti error:", e));
 var unko = await unti.then((fe) => fe.text());
 var unkoParsed = parser(unko);

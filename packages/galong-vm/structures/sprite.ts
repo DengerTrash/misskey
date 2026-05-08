@@ -1,5 +1,5 @@
 import { Sprite } from "../../galong-render/src/sprite.ts";
-import { GalongPlayer } from "../src/old/player.ts";
+import { GalongPlayer } from "../src/gen2/player.ts";
 import babylon from 'npm:babylonjs'
 export class GalongSprite {
 	readonly parent: GalongPlayer;
@@ -22,8 +22,24 @@ export class GalongSprite {
 
 		this.mesh = babylon.MeshBuilder.CreateBox( "box", {}, parent.rend.scenes[0] );
 	}
+	pointInDirection(x: number, y:number, z: number){
+		this.mesh.rotation = new babylon.Vector3(x, y, z)
+	}
+	/**
+	 * 1秒あたりで回す角度を決定します
+	 * @param x
+	 * @param y
+	 * @param z
+	 */
 	rotatePerSecond(x: number, y: number, z: number) {
-		this.mesh.rotate(new babylon.Vector3(x,y,z),1)
-    // console.log(`[${this.id}] rotated to Y:${this.rotation.y}`);
+		const deltaTime = this.parent.rend.baby.getDeltaTime() / 1000;
+		 const rotationQuaternion = babylon.Quaternion.RotationYawPitchRoll(
+			babylon.Tools.ToRadians(x) * deltaTime,
+			babylon.Tools.ToRadians(y) * deltaTime,
+			babylon.Tools.ToRadians(z) * deltaTime
+		)
+		if(!this.mesh.rotationQuaternion) this.mesh.rotationQuaternion = babylon.Quaternion.FromEulerVector(this.mesh.rotation);
+		this.mesh.rotationQuaternion?.multiplyInPlace(rotationQuaternion);
+    console.log(`[${this.id}] rotated to Y:${this.rotation.y}`);
   }
 }
