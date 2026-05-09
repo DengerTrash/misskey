@@ -90,7 +90,12 @@ export class GalongVM {
 		//console.log(sprite)
 		switch (instruction.type) {
 			case "Define": {
-				const spriteInstance = new GalongSprite(this.parents, crypto.randomUUID())
+				const spriteInstance = new GalongSprite(
+					this.parents,
+					this.parents.rend.scenes[0],
+					crypto.randomUUID()
+				);
+
 				for(const va of instruction.value!){
 					const { value } = va;
 					if(value.key === 'on_start'){

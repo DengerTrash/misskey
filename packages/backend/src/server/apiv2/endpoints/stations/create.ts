@@ -31,6 +31,7 @@ export default Endpoint({
 	/**ログインデータの認証も追加しなきゃじゃん。。 */
 	async POST(ctx){
 		const bod = await ctx?.req.json()
+
 		await this.core?.supabase?.from('stations').insert({
 			name: bod.name
 		})

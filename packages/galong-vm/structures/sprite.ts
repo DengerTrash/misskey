@@ -4,13 +4,14 @@ import babylon from 'npm:babylonjs'
 export class GalongSprite {
 	readonly parent: GalongPlayer;
 	readonly id: string;
+	public scene: babylon.Scene
 	public on_start: Array<string>;
 	public x: Float32Array
 	public y: Float32Array
 	public z: Float32Array
 	readonly mesh: babylon.Mesh
 	public rotation: {x: number,y: number,z: number}
-	constructor(parent: GalongPlayer,id: string){
+	constructor(parent: GalongPlayer,scene: babylon.Scene, id: string){
 		this.parent = parent;
 		this.id = id;
 		this.x = new Float32Array(32);
@@ -20,7 +21,9 @@ export class GalongSprite {
 
 		this.on_start = []
 
-		this.mesh = babylon.MeshBuilder.CreateBox( "box", {}, parent.rend.scenes[0] );
+		this.scene = scene
+
+		this.mesh = babylon.MeshBuilder.CreateBox( "box", {}, scene );
 	}
 	pointInDirection(x: number, y:number, z: number){
 		this.mesh.rotation = new babylon.Vector3(x, y, z)
@@ -40,6 +43,5 @@ export class GalongSprite {
 		)
 		if(!this.mesh.rotationQuaternion) this.mesh.rotationQuaternion = babylon.Quaternion.FromEulerVector(this.mesh.rotation);
 		this.mesh.rotationQuaternion?.multiplyInPlace(rotationQuaternion);
-    console.log(`[${this.id}] rotated to Y:${this.rotation.y}`);
   }
 }

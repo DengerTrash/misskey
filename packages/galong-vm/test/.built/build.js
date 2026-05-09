@@ -166529,13 +166529,14 @@ var import_npm_babylonjs = __toESM(require_babylon());
 var GalongSprite = class {
   parent;
   id;
+  scene;
   on_start;
   x;
   y;
   z;
   mesh;
   rotation;
-  constructor(parent, id) {
+  constructor(parent, scene, id) {
     this.parent = parent;
     this.id = id;
     this.x = new Float32Array(32);
@@ -166547,14 +166548,23 @@ var GalongSprite = class {
       z: 0
     };
     this.on_start = [];
-    this.mesh = import_npm_babylonjs.default.MeshBuilder.CreateBox("box", {}, parent.rend.scenes[0]);
+    this.scene = scene;
+    this.mesh = import_npm_babylonjs.default.MeshBuilder.CreateBox("box", {}, scene);
   }
+  pointInDirection(x, y, z) {
+    this.mesh.rotation = new import_npm_babylonjs.default.Vector3(x, y, z);
+  }
+  /**
+  * 1秒あたりで回す角度を決定します
+  * @param x
+  * @param y
+  * @param z
+  */
   rotatePerSecond(x, y, z) {
     const deltaTime = this.parent.rend.baby.getDeltaTime() / 1e3;
     const rotationQuaternion = import_npm_babylonjs.default.Quaternion.RotationYawPitchRoll(import_npm_babylonjs.default.Tools.ToRadians(x) * deltaTime, import_npm_babylonjs.default.Tools.ToRadians(y) * deltaTime, import_npm_babylonjs.default.Tools.ToRadians(z) * deltaTime);
     if (!this.mesh.rotationQuaternion) this.mesh.rotationQuaternion = import_npm_babylonjs.default.Quaternion.FromEulerVector(this.mesh.rotation);
     this.mesh.rotationQuaternion?.multiplyInPlace(rotationQuaternion);
-    console.log(`[${this.id}] rotated to Y:${this.rotation.y}`);
   }
 };
 
@@ -166606,7 +166616,7 @@ var GalongVM = class {
   async state(instruction, sprite) {
     switch (instruction.type) {
       case "Define": {
-        const spriteInstance = new GalongSprite(this.parents, crypto.randomUUID());
+        const spriteInstance = new GalongSprite(this.parents, this.parents.rend.scenes[0], crypto.randomUUID());
         for (const va of instruction.value) {
           const { value } = va;
           if (value.key === "on_start") {
