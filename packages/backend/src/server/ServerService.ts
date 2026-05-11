@@ -153,6 +153,8 @@ export class ServerService implements OnApplicationShutdown {
 		if (useHono) {
 
 			const yokonagashi = async(request: Fastify.FastifyRequest, reply) => {
+				console.log('Hono!?')
+
 				// 1. Fastifyのリクエストを、標準のWeb Requestに変換
 				const protocol = request.protocol; // http or https
 				const host = request.headers.host;

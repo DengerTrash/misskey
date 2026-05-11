@@ -6,6 +6,7 @@ export type GalongToken =
 | ExpressionGalongToken
 | AssignmentExpressionGalongToken
 | CallExpressionGalongToken
+| MemberExpressionPropRefExpGalongToekn
 
 interface BaseGalongToken {
 	type: string
@@ -24,7 +25,12 @@ interface DefineGalongToken extends BaseGalongToken {
 interface FunctionGalongToken extends BaseGalongToken {
 	type: 'Function',
 	identifier: string;
-	arguments: Array<unknown>;
+	arguments: Array<string>;
+	execute: FunctionBody
+}
+
+interface FunctionBody extends BaseGalongToken{
+	type: 'FunctionBody',
 	execute: Array<GalongToken>;
 }
 
@@ -34,21 +40,28 @@ interface ForeverGalongToken extends BaseGalongToken {
 }
 // Exoressions
 
-interface ExpressionGalongToken extends BaseGalongToken {
+export interface ExpressionGalongToken extends BaseGalongToken {
 	type: "Expression",
-	value: AssignmentExpressionGalongToken
+	value: CallExpressionGalongToken
 }
 
 
 interface AssignmentExpressionGalongToken extends BaseGalongToken {
 	type: "AssignmentExpression",
+	key: string;
 	value: Array<string>;
 }
 
 // member
 
-interface CallExpressionGalongToken extends BaseGalongToken {
+export interface CallExpressionGalongToken extends BaseGalongToken {
 	type: "CallExpression",
 	arguments: Array<unknown>;
-	execute: Array<GalongToken>;
+	execute: MemberExpressionPropRefExpGalongToekn;
+}
+
+export interface MemberExpressionPropRefExpGalongToekn extends BaseGalongToken {
+	type: "MemberExpression_propRefExp";
+  parent: string;
+  method?: string;
 }

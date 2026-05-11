@@ -1,4 +1,5 @@
 import { GalongVM } from "../src/mod.ts";
+import { GalongToken } from "./GalongTokens.ts";
 import { GalongSprite } from "./sprite.ts";
 
 export class GalongFunction {
@@ -10,7 +11,7 @@ export class GalongFunction {
 		vm: GalongVM,
 		name: string,
 		args: Array<string>,
-		execute: Array<any>
+		execute: Array<GalongToken>
 	){
 		this.VM = vm;
 		this.name = name;
@@ -20,7 +21,18 @@ export class GalongFunction {
 	}
 	execute(sprite: GalongSprite, ...args: any){
 		console.log('called')
-		this.VM.execute(this.executes,sprite)
+		let arg: Map<string,unknown> | undefined;
+		if(args){
+			arg = new Map<string,unknown>();
+			/**残余引数！？知らねーよボケ！ */
+			let i = 0;
+			for(const aa of args){
+				arg.set(this.args[i],aa)
+				i++;
+			}
+		}
+		console.log('let,',arg)
+		//await this.VM.execute(this.executes,sprite,arg)
 		//console.log('sssss')
 		//sprite.rotatePerSecond(0,9,0)
 	}

@@ -11,12 +11,12 @@ export class GalongVM {
   private nextFrameTasks: (() => void)[] = [];
   public isRunning: boolean = true;
 
-	public sprites: Array<GalongSprite>
+	public sprites: Map<string,GalongSprite>
 	public functions: Map<string,GalongFunction>
 	readonly parents: GalongPlayer;
 	constructor(parents: GalongPlayer){
 		this.parents = parents
-		this.sprites = []
+		this.sprites = new Map()
 		this.functions = new Map()
 	}
   /**
@@ -47,6 +47,28 @@ export class GalongVM {
     }
   }
 
+	executeCompiler(code: string){
+		/**
+		const aaa = function(parents: GalongPlayer) {
+
+			parents.vm.sprites.set("Cube",new GalongSprite(
+				parents,
+				parents.rend.scenes[0],
+				crypto.randomUUID()
+			))
+		}
+		aaa(this.parents)
+		console.log(this.sprites)
+		*/
+		const cocco = new Function("parents","assets", code)
+		try {
+			cocco(this.parents,{
+				GalongSprite
+			})
+		} catch(e){
+			console.error(e)
+		}
+	}
   /**
    * 命令（JSON）を実行するインタプリタ
    */

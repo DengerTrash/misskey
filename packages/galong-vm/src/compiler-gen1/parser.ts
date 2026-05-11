@@ -3,7 +3,7 @@ import * as ohm from 'npm:ohm-js'
 import * as ohmExtra from 'npm:ohm-js/extras'
 import { GalongToken } from "../../structures/GalongTokens.ts";
 
-const ohmGramma = fetch('../../src/galong.ohm')
+const ohmGramma = fetch(new URL('galong.ohm',import.meta.url))
 ohmGramma.catch(e => console.error('ohm error:',e))//new URL('./galong.ohm',import.meta.url),'utf-8')
 const ohmGrammar = await ohmGramma.then(fe => fe.text());
 
@@ -25,6 +25,7 @@ export function parser(moji: string): Array<GalongToken>{
 			value: 2
 		},
 		CallExpression_memberExpExp: {
+			type: 'CallExpression',
 			execute: 0,
 			arguments: 1,
 		},

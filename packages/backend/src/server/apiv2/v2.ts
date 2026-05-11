@@ -20,9 +20,7 @@ export default function initHonoland(config: HonolandInitOption): Honoland{
 			if(def.get){
 				hr.get(def.path, (c) => {
 					const result = def?.execute(c);
-					if (typeof result === 'object') {
-						return c.json(result);
-					}
+					//if (typeof result === 'object') return c.json(result);
 					return c.text('something error!');
 				});
 			}
