@@ -9,6 +9,7 @@ import * as fs from "node:fs";
 export class GalongVM {
 	// 次のフレームで再開すべきタスク（Promiseのresolve関数）のリスト
   private nextFrameTasks: (() => void)[] = [];
+	private foreverTasks: (() => void)[] = [];
   public isRunning: boolean = true;
 
 	public sprites: Map<string,GalongSprite>
@@ -18,7 +19,8 @@ export class GalongVM {
 		this.parents = parents
 		this.sprites = new Map()
 		this.functions = new Map()
-	}
+	};
+
   /**
    * スクリプト内で呼び出す「フレーム同期待ち」関数。
    * これを await することで、ロジックの実行が一旦止まり、
@@ -60,11 +62,14 @@ export class GalongVM {
 		aaa(this.parents)
 		console.log(this.sprites)
 		*/
+
 		const cocco = new Function("parents","assets", code)
+		console.log(cocco)
 		try {
-			cocco(this.parents,{
+			const jikkou = cocco(this.parents,{
 				GalongSprite
 			})
+			console.log(jikkou)
 		} catch(e){
 			console.error(e)
 		}
@@ -183,13 +188,9 @@ export class GalongVM {
 	async bang(){
 		console.log('bang')
 		for await(const sprite of this.sprites){
-			if(sprite.on_start){
+			if(sprite[1].config?.on_start){
 				console.log('onstart')
-				for await(const func of sprite.on_start){
-					console.log(this.functions)
-					// on_startの関数の第一引数は必ずSpriteになるぜ
-					const exec = this.functions.get(func)?.execute(sprite,sprite)
-				}
+				console.log()
 			}
 		}
 		this.loop()

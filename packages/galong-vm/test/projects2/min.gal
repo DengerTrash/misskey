@@ -1,13 +1,7 @@
-define Cube{
-	on_start = [
-		on_start_1,
-	]
-};
+function on_start(sprite){
+	forever{
+		sprite.rotatePerSecond()
+	}
+}
 //const hoge = 42;
 
-/* x:4 y:80 */
-function on_start_1(sprite){
-	forever{
-		sprite.rotatePerSecond(45,0,0)
-	}
-};

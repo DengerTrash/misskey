@@ -1,14 +1,16 @@
-const bund = await Deno.bundle({
-	entrypoints: [import.meta.resolve('../src/mod.ts')],
-	outputPath: 'packages/galong-vm/test/.built/build.js',
-	platform: "browser",
-  //minify: true,
-	write: true,
-	format: 'esm'
-});
-console.log(bund.success)
-console.log(bund.errors)
 
+async function bund(){
+	const bundtry = await Deno.bundle({
+			entrypoints: [import.meta.resolve('../src/mod.ts')],
+			outputPath: 'packages/galong-vm/test/.built/build.js',
+			platform: "browser",
+		  //minify: true,
+			write: true,
+			format: 'esm'
+		});
+		console.log(bundtry.success)
+		console.log(bundtry.errors)
+}
 async function handler(req: Request): Promise<Response> {
 	const { pathname } = new URL(req.url);
 
@@ -47,4 +49,12 @@ async function handler(req: Request): Promise<Response> {
   return new Response(html, responseHeaders);
 }
 
+bund()
+
 Deno.serve(handler);
+
+console.log("👀 Watching for changes...");
+const watcher = Deno.watchFs("./packages/galong-vm/src"); // カレントディレクトリ以下を監視
+for await (const event of watcher) {
+  if (event.kind === "modify") bund()
+}

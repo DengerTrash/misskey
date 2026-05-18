@@ -31,6 +31,8 @@ import { SigninService } from './SigninService.js';
 import type { AuthenticationResponseJSON } from '@simplewebauthn/server';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
+import * as supabase from '@supabase/supabase-js'
+
 @Injectable()
 export class SigninApiService {
 	private logger: Logger;
@@ -90,6 +92,14 @@ export class SigninApiService {
 		const password = body['password'];
 		const token = body['token'];
 
+		// TODO: supabae挿入しろよ！もうクライアント作っちゃえよ
+
+		/*
+		const client = supabase.createClient(
+			this.config.supabase?.url,
+			this.config.supabase?.key
+		)
+		*/
 		function error(status: number, error: { id: string }) {
 			reply.code(status);
 			return { error };
@@ -167,6 +177,12 @@ export class SigninApiService {
 		// Compare password
 		const same = await bcrypt.compare(password, profile.password!);
 
+			/*
+		const supaTest = await client.auth.signInWithPassword({
+			email: username,
+			password
+		});
+		*/
 		const fail = async (status?: number, failure?: { id: string; }) => {
 			// Append signin history
 			await this.signinsRepository.insert({
@@ -180,6 +196,12 @@ export class SigninApiService {
 			return error(status ?? 500, failure ?? { id: '4e30e80c-e338-45a0-8c8f-44455efa3b76' });
 		};
 
+		/**
+
+		if(supaTest.error){
+			fail()
+		};
+		*/
 		if (!profile.twoFactorEnabled) {
 			if (process.env.NODE_ENV !== 'test') {
 				if (this.meta.enableHcaptcha && this.meta.hcaptchaSecretKey) {
@@ -213,7 +235,7 @@ export class SigninApiService {
 				}
 			}
 
-			if (same) {
+			if (same){//!supaTest.error) {
 				return this.signinService.signin(request, reply, user);
 			} else {
 				return await fail(403, {

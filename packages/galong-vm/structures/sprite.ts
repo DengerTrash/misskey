@@ -1,6 +1,11 @@
 import { Sprite } from "../../galong-render/src/sprite.ts";
 import { GalongPlayer } from "../src/gen2/player.ts";
-import babylon from 'npm:babylonjs'
+import babylon from 'npm:babylonjs';
+
+interface GalongSpriteConfig {
+	on_start: Array<string>;
+	[some: string]: any;
+}
 export class GalongSprite {
 	readonly parent: GalongPlayer;
 	readonly id: string;
@@ -10,8 +15,9 @@ export class GalongSprite {
 	public y: Float32Array
 	public z: Float32Array
 	readonly mesh: babylon.Mesh
+	readonly config?: GalongSpriteConfig
 	public rotation: {x: number,y: number,z: number}
-	constructor(parent: GalongPlayer,scene: babylon.Scene, id: string){
+	constructor(parent: GalongPlayer,scene: babylon.Scene, id: string, config?: GalongSpriteConfig){
 		this.parent = parent;
 		this.id = id;
 		this.x = new Float32Array(32);
@@ -24,6 +30,16 @@ export class GalongSprite {
 		this.scene = scene
 
 		this.mesh = babylon.MeshBuilder.CreateBox( "box", {}, scene );
+
+		this.config = config;
+	}
+	move(x: number, y:number, z: number){
+		this.mesh.position.addInPlace(
+			new babylon.Vector3(x, y, z)
+		)
+	}
+	goto(x: number, y:number, z: number){
+		this.mesh.position = new babylon.Vector3(x, y, z)
 	}
 	pointInDirection(x: number, y:number, z: number){
 		this.mesh.rotation = new babylon.Vector3(x, y, z)

@@ -362,58 +362,7 @@ Galong {
   assignmentOperator = "=" | ">>>=" | "<<=" | ">>="
                      | "*=" | "/=" | "%=" | "+=" | "-=" | "&=" | "^=" | "|="
 
-	HoistableDeclaration =
-    | FunctionDeclaration
-
-	ModuleItem =
-    //| ImportDeclaration
-    | ExportDeclaration
-
-	ExportDeclaration =
-    | export ExportFromClause FromClause #sc -- alt1
-    | export NamedExports #sc -- alt2
-    | export VariableStatement -- alt3
-    | export Declaration -- alt4
-    | export default HoistableDeclaration -- alt5
-  //  | export default ~("function" | ("async" ~lineTerminator "function") | "class") AssignmentExpression #sc -- alt6
-
-	ExportFromClause =
-    | "*" -- alt1
-    | "*" "as" ModuleExportName -- alt2
-    | NamedExports -- alt3
-
-  ExportsList =
-    | ExportsList "," ExportSpecifier -- alt2
-    | ExportSpecifier -- alt1
-
-	ExportSpecifier =
-    | ModuleExportName -- alt1
-    | ModuleExportName "as" ModuleExportName -- alt2
-
-	FromClause =
-    | "from" ModuleSpecifier -- alt1
-
-	NamedExports =
-    | "{" "}" -- alt1
-    | "{" ExportsList "}" -- alt2
-    | "{" ExportsList "," "}" -- alt3
-
-	Module =
-    | ModuleBody?
-
-  ModuleBody =
-    | ModuleItemList
-
-  ModuleItemList =
-    | ModuleItem+
-
-	ModuleExportName =
-    | identifierName
-    | stringLiteral
-
-	ModuleSpecifier =
-    | stringLiteral
-	// §A.4 Statements -- https://es5.github.io/#A.4
+  // §A.4 Statements -- https://es5.github.io/#A.4
 
   Statement
     = Block
@@ -434,7 +383,6 @@ Galong {
     | DebuggerStatement
     | ForeverStatement
 		| DefineStatement
-		| ClassStatement
 
   Block = "{" StatementList "}"
 
@@ -496,49 +444,9 @@ Galong {
 
   ForeverStatement = forever Statement
 
-	DefineStatement = define identifier DefineTail
-	DefineElement =
-    | MethodDefinition -- alt1
-		| #sc -- alt6
-	DefineElementList =
-	  | DefineElementList DefineElement -- alt2
-		| DefineElement -- alt1
+	DefineStatement = define identifier Statement*
 
-	DefineBody =
-    | DefineElementList
 
-	DefineTail =
-    | ClassHeritage? "{" DefineBody? "}" -- alt1
-
-	ClassStatement =
-    | class identifier? ClassTail -- alt1
-
-  ClassTail =
-    | ClassHeritage? "{" ClassBody? "}" -- alt1
-
-	ClassElement =
-    | MethodDefinition -- alt1
-	ClassElementList =
-	  | ClassElementList ClassElement -- alt2
-    | ClassElement -- alt1
-
-	ClassBody =
-    | ClassElementList
-
-	ClassHeritage =
-    | extends LeftHandSideExpression -- alt1
-
-	ClassElementName =
-    | PropertyName
-
-	MethodDefinition =
-    | ClassElementName "(" FormalParameter ")" "{" FunctionBody "}" -- alt1
-		| GeneratorMethod -- alt2
-
-	GeneratorMethod =
-    | "*" ClassElementName "(" FormalParameter ")" "{" GeneratorBody "}" -- alt1
-	GeneratorBody =
-    | FunctionBody
 
   Catch = catch "(" FormalParameter ")" Block
 

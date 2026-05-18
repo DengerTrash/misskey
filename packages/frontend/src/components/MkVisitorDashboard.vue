@@ -79,6 +79,7 @@ if (instance.clientOptions.showActivitiesForVisitor !== false) {
 }
 
 function signin() {
+	console.log('sign in!?');
 	const { dispose } = os.popup(XSigninDialog, {
 		autoSet: true,
 	}, {

@@ -166544,8 +166544,9 @@ var GalongSprite = class {
   y;
   z;
   mesh;
+  config;
   rotation;
-  constructor(parent, scene, id) {
+  constructor(parent, scene, id, config) {
     this.parent = parent;
     this.id = id;
     this.x = new Float32Array(32);
@@ -166559,6 +166560,13 @@ var GalongSprite = class {
     this.on_start = [];
     this.scene = scene;
     this.mesh = import_npm_babylonjs.default.MeshBuilder.CreateBox("box", {}, scene);
+    this.config = config;
+  }
+  move(x, y, z) {
+    this.mesh.position.addInPlace(new import_npm_babylonjs.default.Vector3(x, y, z));
+  }
+  goto(x, y, z) {
+    this.mesh.position = new import_npm_babylonjs.default.Vector3(x, y, z);
   }
   pointInDirection(x, y, z) {
     this.mesh.rotation = new import_npm_babylonjs.default.Vector3(x, y, z);
@@ -166581,6 +166589,7 @@ var GalongSprite = class {
 var GalongVM = class {
   // 次のフレームで再開すべきタスク（Promiseのresolve関数）のリスト
   nextFrameTasks = [];
+  foreverTasks = [];
   isRunning = true;
   sprites;
   functions;
@@ -166614,10 +166623,12 @@ var GalongVM = class {
   }
   executeCompiler(code) {
     const cocco = new Function("parents", "assets", code);
+    console.log(cocco);
     try {
-      cocco(this.parents, {
+      const jikkou = cocco(this.parents, {
         GalongSprite
       });
+      console.log(jikkou);
     } catch (e) {
       console.error(e);
     }
@@ -166679,12 +166690,9 @@ var GalongVM = class {
   async bang() {
     console.log("bang");
     for await (const sprite of this.sprites) {
-      if (sprite.on_start) {
+      if (sprite[1].config?.on_start) {
         console.log("onstart");
-        for await (const func of sprite.on_start) {
-          console.log(this.functions);
-          const exec = this.functions.get(func)?.execute(sprite, sprite);
-        }
+        console.log();
       }
     }
     this.loop();
@@ -166758,15 +166766,6 @@ var GalongRenderer = class {
 };
 
 // packages/galong-vm/src/compiler-gen1/compile.ts
-var defineScript = function(identifier) {
-  return `
-parents.vm.sprites.set("Cube",new assets.GalongSprite(
-	parents,
-	parents.rend.scenes[0],
-	crypto.randomUUID()
-))
-`;
-};
 var functionScript = function(identifier, argument, exec) {
   return `
 function ${identifier}(${argument.toString()}){
@@ -166775,52 +166774,88 @@ function ${identifier}(${argument.toString()}){
 `;
 };
 var foreverScript = function(exec) {
-  return exec;
-};
-var expressionScript = function(code) {
-  const { execute } = code;
   return `
-${execute.parent}.${execute.method}(${code.arguments.join()})
+parents.rend.scenes[0].onBeforeRenderObservable.add(() => {
+	${exec}
+});
 `;
 };
-function compiler(code) {
-  const result = [];
-  const core = function(cod) {
+var expressionScript = function(code) {
+  if (code?.value.type === "AssignmentExpression") {
+    const valueMapped = code.value.value.filter((ma) => typeof ma === "string");
+    return `${code.value.key}: [ ${valueMapped.toString()} ]`;
+  }
+  ;
+  if (code?.value.type === "CallExpression") {
+    const { execute } = code.value;
+    return `${execute.parent}.${execute.method}(${code.value.arguments.join()})`;
+  }
+};
+var GalongCompiler = class {
+  data;
+  constructor() {
+    this.data = {};
+  }
+  defineScript(identifier, value) {
+    const valueData = [];
+    console.log("value:", value);
+    for (const valu of value) {
+      valueData.push(this.core(valu));
+    }
+    return `
+parents.vm.sprites.set("${identifier}",new assets.GalongSprite(
+	parents,
+	parents.rend.scenes[0],
+	crypto.randomUUID(),
+	{
+		${valueData.toString()}
+	}
+))
+`;
+  }
+  core(cod) {
+    console.log("core:", cod);
     const res = [];
     switch (cod.type) {
       case "Empty": {
         break;
       }
       case "Define": {
-        res.push(defineScript(cod.identifier));
+        res.push(this.defineScript(cod.identifier, cod.value));
         break;
       }
       case "Function": {
         const execu = [];
-        for (const coco of cod.execute.execute) execu.push(core(coco));
+        for (const coco of cod.execute.execute) execu.push(this.core(coco));
         res.push(functionScript(cod.identifier, cod.arguments, execu.join()));
         break;
       }
       case "Forever": {
         const execu = [];
-        for (const coco of cod.execute) execu.push(core(coco));
+        for (const coco of cod.execute) execu.push(this.core(coco));
         res.push(foreverScript(execu.join("")));
         break;
       }
       case "Expression": {
-        res.push(expressionScript(cod.value));
+        res.push(expressionScript(cod));
         break;
       }
       case "AssignmentExpression":
       case "CallExpression":
     }
     return res;
-  };
-  for (const cod of code) {
-    result.push(core(cod).join(""));
   }
-  return result.join("");
-}
+  compile(code) {
+    const result = [];
+    for (const cod of code) {
+      result.push(this.core(cod).join(""));
+    }
+    return {
+      code: result.join(""),
+      data: this.data
+    };
+  }
+};
 
 // node_modules/.deno/ohm-js@17.5.0/node_modules/ohm-js/src/common.js
 var common_exports = {};
@@ -175596,9 +175631,11 @@ var ohmGrammar2 = await ohmGramma.then((fe) => fe.text());
 function parser(moji) {
   const uuu = grammar(ohmGrammar2);
   const uuuu = uuu.match(moji);
+  console.log(uuuu?.message);
   const ast = toAST(uuuu, {
     AssignmentExpressionOrElision_elision: {},
     AssignmentExpression_assignment: {
+      type: "AssignmentExpression",
       key: 0,
       value: 2
     },
@@ -175615,6 +175652,9 @@ function parser(moji) {
       type: "Define",
       identifier: 1,
       value: 2
+    },
+    DefineTail_alt1: {
+      data: 2
     },
     EmptyStatement: {
       type: "Empty"
@@ -175639,6 +175679,11 @@ function parser(moji) {
     MemberExpression_propRefExp: {
       parent: 0,
       method: 2
+    },
+    MethodDefinition_alt1: {
+      class: 2,
+      method: 0,
+      execute: 5
     }
   });
   const result = ast[1];
@@ -175649,7 +175694,7 @@ function parser(moji) {
 var unti = fetch("../projects2/min.gal");
 unti.catch((e) => console.error("unti error:", e));
 var unko = await unti.then((fe) => fe.text());
-var unkoParsed = compiler(parser(unko));
+var unkoParsed = new GalongCompiler().compile(parser(unko));
 var GalongPlayer = class {
   di;
   rend;
@@ -175668,7 +175713,8 @@ var GalongPlayer = class {
   }
   async bang() {
     await this.rend.init();
-    const cococo = this.vm.executeCompiler(unkoParsed);
+    console.log(unkoParsed.code);
+    const cococo = this.vm.executeCompiler(unkoParsed.code);
   }
 };
 export {

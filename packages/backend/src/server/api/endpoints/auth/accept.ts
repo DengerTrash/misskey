@@ -79,6 +79,7 @@ export default class extends Endpoint<typeof meta, typeof paramDef> { // eslint-
 
 				const now = new Date();
 
+				console.log('NEW LOGIN?');
 				await this.accessTokensRepository.insert({
 					id: this.idService.gen(now.getTime()),
 					lastUsedAt: now,

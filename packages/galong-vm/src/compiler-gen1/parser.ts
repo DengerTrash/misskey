@@ -16,11 +16,13 @@ interface ExpectedToASTReturn {
 export function parser(moji: string): Array<GalongToken>{
 	const uuu = ohm.grammar(ohmGrammar)
 	const uuuu = uuu.match(moji)
+	console.log(uuuu?.message!)
 	const ast = ohmExtra.toAST(uuuu,{
 		AssignmentExpressionOrElision_elision: {
 
 		},
 		AssignmentExpression_assignment: {
+			type: "AssignmentExpression",
 			key: 0,
 			value: 2
 		},
@@ -37,6 +39,9 @@ export function parser(moji: string): Array<GalongToken>{
 			type: "Define",
 			identifier: 1,
 			value: 2
+		},
+		DefineTail_alt1: {
+			data: 2
 		},
 		EmptyStatement: {
 			type: "Empty"
@@ -61,6 +66,11 @@ export function parser(moji: string): Array<GalongToken>{
 		MemberExpression_propRefExp: {
 			parent: 0,
 			method: 2
+		},
+		MethodDefinition_alt1: {
+			class: 2,
+			method: 0,
+			execute: 5
 		}
 	}) as ExpectedToASTReturn;
 	const result = ast[1] as Array<GalongToken>;

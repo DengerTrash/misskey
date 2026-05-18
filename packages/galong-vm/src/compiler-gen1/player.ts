@@ -1,13 +1,13 @@
 import { GalongRenderer } from "../../../galong-render/src/mod.ts"
 import { GalongVM } from "../mod.ts"
-import compiler from "./compile.ts";
+import GalongCompiler from "./compile.ts";
 import { parser } from "./parser.ts";
 
 
 const unti = fetch('../projects2/min.gal')//new URL('../test/min.gal',import.meta.url),'utf-8')
 unti.catch(e => console.error('unti error:',e))//new URL('./galong.ohm',import.meta.url),'utf-8')
 const unko = await unti.then(fe => fe.text());
-const unkoParsed = compiler(parser(unko))
+const unkoParsed = new GalongCompiler().compile(parser(unko))
 
 export class GalongPlayer {
 
@@ -28,6 +28,7 @@ export class GalongPlayer {
 	}
 	async bang(){
 		await this.rend.init()
-		const cococo = this.vm.executeCompiler(unkoParsed)
+		console.log(unkoParsed.code)
+		const cococo = this.vm.executeCompiler(unkoParsed.code)
 	}
 }

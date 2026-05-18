@@ -5,7 +5,8 @@
 		"compile-config": "cd packages/backend && deno task compile-config",
 		"dev": "deno run -A scripts/dev.ts",
 		"start": "deno task compile-config && deno run -A ./built/boot/entry.js",
-		"update": "pnpm i && pnpm build && pnpm migrate && pnpm start"
+		"update": "pnpm i && pnpm build && pnpm migrate && pnpm start",
+		"test-galong": "Deno run -A --watch --unstable-bundle packages/galong-vm/test/test.ts"
 	},
 	"workspace": [
 		"packages/backend"

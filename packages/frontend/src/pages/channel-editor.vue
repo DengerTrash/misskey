@@ -39,7 +39,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 				<template #label>{{ i18n.ts.pinnedNotes }}</template>
 
 				<div class="_gaps">
-					<MkButton primary rounded @click="addPinnedNote()"><i class="ti ti-plus"></i></MkButton>
+					<MkButton primary rounded @click="addCoodinator()"><i class="ti ti-plus"></i></MkButton>
 
 					<MkDraggable
 						:modelValue="pinnedNoteIds.map(id => ({ id }))"
@@ -133,6 +133,18 @@ fetchChannel();
 async function addPinnedNote() {
 	const { canceled, result: value } = await os.inputText({
 		title: i18n.ts.noteIdOrUrl,
+	});
+	if (canceled || value == null) return;
+	const fromUrl = value.includes('/') ? value.split('/').pop() : null;
+	const note = await os.apiWithDialog('notes/show', {
+		noteId: fromUrl ?? value,
+	});
+	pinnedNoteIds.value.unshift(note.id);
+}
+
+async function addCoodinator() {
+	const { canceled, result: value } = await os.inputText({
+		title: '追加したいユーザーを選択',
 	});
 	if (canceled || value == null) return;
 	const fromUrl = value.includes('/') ? value.split('/').pop() : null;

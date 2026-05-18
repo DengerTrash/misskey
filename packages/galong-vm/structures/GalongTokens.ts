@@ -42,7 +42,7 @@ interface ForeverGalongToken extends BaseGalongToken {
 
 export interface ExpressionGalongToken extends BaseGalongToken {
 	type: "Expression",
-	value: CallExpressionGalongToken
+	value: AssignmentExpressionGalongToken | CallExpressionGalongToken
 }
 
 
